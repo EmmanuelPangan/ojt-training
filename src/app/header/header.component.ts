@@ -12,11 +12,15 @@ export class HeaderComponent implements OnInit {
   isButtonDisabled : boolean = true;
 
   message = "Clicking";
-  onSave()
+  onClick()
   {
     this.message = "clicked";
     alert("yey clicked!!");
   }
+
+  isLoggedIn = true;
+  user = { name: 'Alice' };
+
 
   constructor() { }
 
