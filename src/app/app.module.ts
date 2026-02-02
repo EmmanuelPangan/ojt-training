@@ -6,6 +6,8 @@ import { HeaderComponent } from './header/header.component';
 import { AvailabilityStatusPipe } from './availability-status.pipe';
 import { HeadComponent } from './head/head.component';
 import { FootComponent } from './foot/foot.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,12 @@ import { FootComponent } from './foot/foot.component';
     HeaderComponent,
     AvailabilityStatusPipe,
     HeadComponent,
-    FootComponent
+    FootComponent,
+    LeftSidebarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
