@@ -11,6 +11,10 @@
 <p>{{message}}</p>
 
 <h1>ngIf</h1>
+
+<button (click)="onLogout()">
+    Log Out
+</button>
 <div *ngIf="isLoggedIn">
     Hello, Welcome {{user.name}}
 </div>
@@ -18,3 +22,6 @@
 <div *ngIf="!isLoggedIn">
     Please Log In
 </div>
+
+
+

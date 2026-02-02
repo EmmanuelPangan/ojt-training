@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
   isButtonDisabled : boolean = true;
 
+
+
   message = "Clicking";
   onClick()
   {
@@ -20,6 +22,11 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn = true;
   user = { name: 'Alice' };
+
+  onLogout()
+  {
+    this.isLoggedIn = false;
+  }
 
 
   constructor() { }
