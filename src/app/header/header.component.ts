@@ -9,6 +9,15 @@ export class HeaderComponent implements OnInit {
 
   Welcome = "Welcome To My Page";
 
+  isButtonDisabled : boolean = true;
+
+  message = "Clicking";
+  onSave()
+  {
+    this.message = "clicked";
+    alert("yey clicked!!");
+  }
+
   constructor() { }
 
   ngOnInit() {
