@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MypageComponent } from './pages/mypage/mypage.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    MypageComponent
+    MypageComponent,
+
   ],
   imports: [
     BrowserModule
