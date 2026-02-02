@@ -4,4 +4,21 @@
     padding: 20px 30px;
     margin-top: 20px;
     background-color: lightblue;
+    gap: 20px;
+
+
 }
+
+#left-part
+{
+    display: list-item;
+    justify-content: left;
+    
+}
+
+#mid-part
+{
+    display: list-item;
+}
+
+   
