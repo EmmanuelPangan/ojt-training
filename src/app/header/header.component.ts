@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   Welcome = "Welcome To My Page";
+  logInButton = "";
 
   isButtonDisabled : boolean = true;
 
@@ -23,9 +24,16 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = true;
   user = { name: 'Alice' };
 
+    onLogin()
+  {
+    this.isLoggedIn = true;
+    this.logInButton = "Log In";
+  }
+
   onLogout()
   {
     this.isLoggedIn = false;
+    this.logInButton = "Log Out";
   }
 
 
