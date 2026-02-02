@@ -24,17 +24,11 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = true;
   user = { name: 'Alice' };
 
-    onLogin()
+    onAuth()
   {
-    this.isLoggedIn = true;
-    this.logInButton = "Log In";
+    this.isLoggedIn = !this.isLoggedIn;
   }
 
-  onLogout()
-  {
-    this.isLoggedIn = false;
-    this.logInButton = "Log in";
-  }
 
 
   constructor() { }
