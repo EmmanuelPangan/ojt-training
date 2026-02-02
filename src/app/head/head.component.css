@@ -1,0 +1,25 @@
+#container
+{
+    display: flex;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    background-color: lightblue;
+
+    #links
+    {
+        flex-grow: 1;
+        display: flex;
+        gap: 20px;
+        justify-content: right;
+
+        
+    }
+    .link
+        {
+            cursor: pointer;
+            &:hover
+            {
+                color: blue;
+            }
+        }
+}

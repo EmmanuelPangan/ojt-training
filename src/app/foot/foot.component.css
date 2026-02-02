@@ -1,0 +1,7 @@
+#foot-container
+{
+        display: flex;
+    padding: 20px 30px;
+    margin-top: 20px;
+    background-color: lightblue;
+}
