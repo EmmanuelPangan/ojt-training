@@ -1,5 +1,4 @@
 <h1>Interpolation</h1>
-
 {{Welcome}}
 <p></p>
 
@@ -12,16 +11,41 @@
 
 <h1>ngIf</h1>
 
-<button (click)="onLogout()">
-    {{logInButton}}
+<button (click)="toggleAuth()">
+    {{isLoggedIn ? 'Log Out': 'Log In'}}
 </button>
-<div *ngIf="isLoggedIn">
+<div *ngIf="isLoggedIn; else loggedOut">
     Hello, Welcome {{user.name}}
 </div>
 
 <div *ngIf="!isLoggedIn">
     Please Log In
 </div>
+
+<h1>ngFor</h1>
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{product.productname}}</td>
+                <td>{{product.Price}}</td>
+                <td>{{product.Availability}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+<h1></h1>
+
+
 
 
 

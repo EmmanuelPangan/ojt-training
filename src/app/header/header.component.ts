@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   Welcome = "Welcome To My Page";
-  logInButton = "Log Out";
 
   isButtonDisabled : boolean = true;
 
+  isLoggedIn = true;
 
 
   message = "Clicking";
@@ -21,15 +21,18 @@ export class HeaderComponent implements OnInit {
     alert("yey clicked!!");
   }
 
-  isLoggedIn = true;
   user = { name: 'Alice' };
 
-    onAuth()
+    toggleAuth()
   {
     this.isLoggedIn = !this.isLoggedIn;
   }
 
-
+  products =
+  [
+    {productname:'Alaska', Price:2500, Availability:'Available'},
+    {productname:'Bearbrand', Price:1000, Availability:'Sold Out'},
+  ]
 
   constructor() { }
 
