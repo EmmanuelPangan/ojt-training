@@ -3,14 +3,12 @@
 
 <div class="layout">
     <app-head (logoClick)="toggleSidebar()"> 
+        
     </app-head>
     <app-left-sidebar [isOpen]="isSidebarOpen"></app-left-sidebar>
-        <app-header>
-
-        
+    <app-header *ngIf="isSidebarOpen">   
         </app-header>
-
-    <app-foot>
+    
         
-    </app-foot>
+    <app-foot> </app-foot>
 </div>
