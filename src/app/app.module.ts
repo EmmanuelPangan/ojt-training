@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MypageComponent } from './pages/mypage/mypage.component';
+import { CustomPipe } from './custom.pipe';
+import { HeaderComponent } from './header/header.component';
+
 
 
 
@@ -11,6 +14,9 @@ import { MypageComponent } from './pages/mypage/mypage.component';
   declarations: [
     AppComponent,
     MypageComponent,
+    CustomPipe,
+    HeaderComponent,
+
 
 
   ],
