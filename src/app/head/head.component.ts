@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-head',
@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./head.component.css']
 })
 export class HeadComponent implements OnInit {
+
+  @Output() logoClick = new EventEmitter<void>();
+
+  toggleSidebar ()
+  {
+    this.logoClick.emit();
+  }
 
   constructor() { }
 

@@ -1,11 +1,16 @@
-<app-head>
-    
-</app-head>
-<app-header>
 
-  
-</app-header>
 
-<app-foot>
-    
-</app-foot>
+
+<div class="layout">
+    <app-head (logoClick)="toggleSidebar()"> 
+    </app-head>
+    <app-left-sidebar [isOpen]="isSidebarOpen"></app-left-sidebar>
+        <app-header>
+
+        
+        </app-header>
+
+    <app-foot>
+        
+    </app-foot>
+</div>
