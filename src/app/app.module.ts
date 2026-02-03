@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { MypageComponent } from './pages/mypage/mypage.component';
 import { CustomPipe } from './custom.pipe';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 
 
@@ -16,6 +18,8 @@ import { HeaderComponent } from './header/header.component';
     MypageComponent,
     CustomPipe,
     HeaderComponent,
+    FooterComponent
+
 
 
 
