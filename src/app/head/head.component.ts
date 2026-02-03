@@ -9,9 +9,14 @@ export class HeadComponent implements OnInit {
 
   @Output() logoClick = new EventEmitter<void>();
 
-  toggleSidebar ()
+  toggleSidebar()
   {
     this.logoClick.emit();
+  }
+
+  toggleAbout()
+  {
+    
   }
 
   constructor() { }

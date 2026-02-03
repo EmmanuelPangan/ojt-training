@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { DetailsComponent } from './details/details.component';
 import { AboutComponent } from './about/about.component';
 import { PlaceComponent } from './place/place.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PlaceComponent } from './place/place.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

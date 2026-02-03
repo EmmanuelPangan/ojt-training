@@ -1,6 +1,6 @@
 .sidebar {
   width: 220px;
-  min-width: 0; /* allow collapse */
+  min-width: 0; 
   background: #f1f1f1;
   padding: 10px;
   transition: width 0.3s ease;
@@ -10,5 +10,5 @@
 
 .sidebar.closed {
   width: 0;
-  padding: 0; /* collapse padding too */
+  padding: 0; 
 }
