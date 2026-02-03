@@ -8,14 +8,23 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class MypageComponent implements OnInit {
 
-  title = 'Trial and Error';
-  name = 'Bea B.';
-  Disabled = true;
-  values = '';
+  title = 'LOG IN';
+  username = 'bea';
+  age = "22";
+  disable = true;
+  values = "";
 
-  onClick() {
-    this.values = 'hi';
+  onclick() {
+    this.values = "hi";
+
   }
+  login = false;
+  Click() {
+    this.login = true;
+  }
+  users = ['bea', 'kei', 'claire'];
+
+  today: number = Date.now();
 
 
 
