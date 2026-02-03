@@ -8,6 +8,10 @@ import { HeadComponent } from './head/head.component';
 import { FootComponent } from './foot/foot.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
+import { LoginComponent } from './login/login.component';
+import { DetailsComponent } from './details/details.component';
+import { AboutComponent } from './about/about.component';
+import { PlaceComponent } from './place/place.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
     AvailabilityStatusPipe,
     HeadComponent,
     FootComponent,
-    LeftSidebarComponent
+    LeftSidebarComponent,
+    LoginComponent,
+    DetailsComponent,
+    AboutComponent,
+    PlaceComponent
   ],
   imports: [
     BrowserModule,

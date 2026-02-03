@@ -1,10 +1,14 @@
 .sidebar {
   width: 220px;
+  min-width: 0; /* allow collapse */
+  background: #f1f1f1;
+  padding: 10px;
   transition: width 0.3s ease;
+  overflow: hidden; /* prevent text overflow */
+  white-space: nowrap; /* prevent text wrapping when collapsing */
 }
 
 .sidebar.closed {
   width: 0;
-  overflow: hidden;
+  padding: 0; /* collapse padding too */
 }
-
