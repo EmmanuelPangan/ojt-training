@@ -1,0 +1,8 @@
+<div class="sidebar" [class.closed]="isClosed" (mouseenter)="openSidebar()" (mouseleave)="closeSidebar()">
+    <h2 class="menu-icon">☰</h2>
+    <ul>
+        <li routerLink="" routerLinkActive="active">Home</li>
+        <li routerLink="/about" routerLinkActive="active">About</li>
+        <li routerLink="/contact" routerLinkActive="active">Contact</li>
+    </ul>
+</div>

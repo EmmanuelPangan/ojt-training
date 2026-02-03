@@ -1,0 +1,42 @@
+.sidebar{
+    width: 220px;
+    background: #2c3e50;
+    color: white;
+    position: relative;
+    top: 10px;
+    left: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar ul{
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.sidebar li:hover,.active{
+    background: #34495e;
+    border-radius: 5px;
+}
+.menu-icon{
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.sidebar.closed {
+    width: 40px; 
+}
+.sidebar h2 {
+    padding: 10px;
+    margin: 0;
+}
+
+.sidebar.closed ul{
+    display: none; 
+}

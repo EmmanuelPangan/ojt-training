@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ojt-training';
+  isSidebarClosed = true;
+  onSidebarChange(state: boolean) {
+    this.isSidebarClosed = state;
+  }
 
 }
