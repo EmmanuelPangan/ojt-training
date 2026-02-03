@@ -3,11 +3,12 @@
         Logo
     </div>
     <div id="links">
+        <div class="link" routerLink="/home">Home</div>
         <div class="link" routerLink="/about">About</div>
         <div class="link" routerLink="/place">Place</div>
         <div class="link" routerLink="/details">Details</div>
-        <div class="link" routerLink="orders">Orders</div>
+        <div class="link" routerLink="/orders">Orders</div>
         <div>|</div>
-        <div class="link" (click)="login()">Login</div>
+        <div class="link" (click)="login()" routerLink="/login">Login</div>
     </div>
 </div>

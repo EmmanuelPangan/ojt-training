@@ -1,5 +1,5 @@
 <div class="app-container">
-  <app-head (logoClick)="toggleSidebar()"></app-head>
+  <app-head (logoClick)="toggleSidebar(); showHeaderAgain()"></app-head>
 
   <div class="main-layout">
     <app-left-sidebar
@@ -10,7 +10,9 @@
     <div class="right-panel">
       <app-header
         class="animate"
-        [class.shifted]="isSidebarOpen">
+        [class.shifted]="isSidebarOpen"
+        *ngIf="showHeader">
+        
       </app-header>
 
       <div class="content">

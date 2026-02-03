@@ -13,6 +13,7 @@ import { DetailsComponent } from './details/details.component';
 import { AboutComponent } from './about/about.component';
 import { PlaceComponent } from './place/place.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     DetailsComponent,
     AboutComponent,
-    PlaceComponent
+    PlaceComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

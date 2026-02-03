@@ -1,14 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  margin: 0;      /* remove default margin */
+  padding: 0;     /* remove default padding */
+}
+
 .sidebar {
   width: 220px;
   min-width: 0; 
-  background: #f1f1f1;
-  padding: 10px;
+  background: lightblue;
+  padding: 0;      /* ensure no inner padding */
+  margin: 0;       /* ensure no outer margin */
   transition: width 0.3s ease;
-  overflow: hidden; /* prevent text overflow */
-  white-space: nowrap; /* prevent text wrapping when collapsing */
+  overflow: hidden;
+  white-space: nowrap;
+  height: 100%;
+  box-sizing: border-box; /* include padding/border in width */
 }
 
 .sidebar.closed {
   width: 0;
-  padding: 0; 
+  padding: 0;
+  margin: 0;
 }
