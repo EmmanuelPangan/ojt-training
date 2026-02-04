@@ -1,0 +1,19 @@
+<H1>{{title}}</H1>
+<h5>Interpolation</h5>
+<input type='text' [value]="username">
+<h5>Property Binding</h5>
+<input type='text' [value]="age" disabled={{disable}}>
+<h5>Event Binding</h5>
+<div><button (click)="onclick()">Save</button></div>
+<p>{{values}}</p>
+<h5>ngIf</h5>
+<button (click)="Click()">OK</button>
+<div *ngIf="login">welcome</div>
+<h5>ngFor</h5>
+<div *ngFor="let user of users">{{user}}</div>
+<h5>use Built-in Pipes</h5>
+<div>
+    <p>Today is {{today| date}}</p>
+</div>
+<h5>create Custom Pipe</h5>
+<p>{{4| custom}}</p>

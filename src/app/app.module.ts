@@ -16,15 +16,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { RouterModule } from '@angular/router';
-import { Excercise1Component } from './excercise1/excercise1.component';
-import { Excercise2Component } from './excercise2/excercise2.component';
-
+import { RouterModule, Routes } from '@angular/router';
+import { ExcerciseComponent } from './excercise/excercise.component';
+import { ListcomponentComponent } from './listcomponent/listcomponent.component';
+import { DetailComponent } from './detail/detail.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  { path: 'excercise1', component: Excercise1Component },
-  { path: 'excercise2', component: Excercise2Component },
-  { path: '', redirectTo: 'excercise1', pathMatch: 'full' }
+  { path: 'home', component: HomeComponent },
+  { path: 'excercise', component: ExcerciseComponent },
+  { path: 'listcomponent', component: ListcomponentComponent },
+  { path: 'detail/:id', component: DetailComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -38,8 +43,10 @@ const routes: Routes = [
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    Excercise1Component,
-    Excercise2Component
+    ExcerciseComponent,
+    ListcomponentComponent,
+    DetailComponent,
+    LoginComponent
   ],
 
   imports: [
@@ -51,7 +58,9 @@ const routes: Routes = [
     MatButtonModule,
     MatMenuModule,
     RouterModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
