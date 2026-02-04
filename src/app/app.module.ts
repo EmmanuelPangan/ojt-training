@@ -15,6 +15,7 @@ import { PlaceComponent } from './place/place.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderComponent } from './order/order.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AboutComponent,
     PlaceComponent,
     OrderComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

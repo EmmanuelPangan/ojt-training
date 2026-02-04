@@ -6,9 +6,9 @@ import { DetailsComponent } from './details/details.component';
 import { PlaceComponent } from './place/place.component';
 import { LoginComponent } from './login/login.component';
 import { OrderComponent } from './order/order.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './header/header.component'; 
 import { AuthGuard } from './auth.guard';
-
+import { RegisterComponent } from './register/register.component';
 const routes : Routes =
 [
   {path:'', redirectTo:'/home', pathMatch: 'full'},
@@ -17,7 +17,8 @@ const routes : Routes =
   {path: 'details', component:DetailsComponent, canActivate:[AuthGuard]},
   {path:'place', component:PlaceComponent, canActivate:[AuthGuard]},
   {path:'orders', component:OrderComponent,canActivate:[AuthGuard]},
-  {path:'login', component:LoginComponent}
+  {path:'login', component:LoginComponent},
+  {path:'register', component:RegisterComponent}
 ];
 
 @NgModule({

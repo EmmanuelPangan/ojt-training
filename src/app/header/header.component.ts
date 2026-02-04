@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ShareDataService } from '../share-data.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,6 +12,15 @@ export class HeaderComponent implements OnInit {
   isButtonDisabled : boolean = true;
 
   isLoggedIn = true;
+
+  data = '';
+
+  constructor( private sharedData: ShareDataService)
+  {
+    this.sharedData.data$.subscribe(value => {
+      this.data = value;
+    });
+  }
 
 
   message = "Clicking";
@@ -34,7 +43,6 @@ export class HeaderComponent implements OnInit {
     {productname:'Bearbrand', Price:1000, Availability:'Sold Out'},
   ]
 
-  constructor() { }
 
   ngOnInit() {
   }
