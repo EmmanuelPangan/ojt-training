@@ -1,4 +1,6 @@
-import { Component, OnInit, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-head',
@@ -26,7 +28,20 @@ export class HeadComponent implements OnInit {
     this.logoClick.emit();
   }
 
-  constructor() { }
+  constructor(private auth: AuthService, private router: Router) { }
+
+  get isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
+
+  onAuthClick(): void {
+    if (this.auth.isLoggedIn()) {
+      this.auth.logout();
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
 
   ngOnInit() {
   }

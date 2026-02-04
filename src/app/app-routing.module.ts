@@ -7,16 +7,16 @@ import { PlaceComponent } from './place/place.component';
 import { LoginComponent } from './login/login.component';
 import { OrderComponent } from './order/order.component';
 import { HeaderComponent } from './header/header.component';
-
+import { AuthGuard } from './auth.guard';
 
 const routes : Routes =
 [
   {path:'', redirectTo:'/home', pathMatch: 'full'},
-  {path:'home', component:HeaderComponent},
-  {path:'about', component:AboutComponent},
-  {path: 'details', component:DetailsComponent},
-  {path:'place', component:PlaceComponent},
-  {path:'orders', component:OrderComponent},
+  {path:'home', component:HeaderComponent, canActivate:[AuthGuard]},
+  {path:'about', component:AboutComponent, canActivate:[AuthGuard]},
+  {path: 'details', component:DetailsComponent, canActivate:[AuthGuard]},
+  {path:'place', component:PlaceComponent, canActivate:[AuthGuard]},
+  {path:'orders', component:OrderComponent,canActivate:[AuthGuard]},
   {path:'login', component:LoginComponent}
 ];
 

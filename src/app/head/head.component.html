@@ -13,6 +13,6 @@
         <div class="link" routerLink="/details">Details</div>
         <div class="link" routerLink="/orders">Orders</div>
         <div>|</div>
-        <div class="link" routerLink="/login" (click)="login()">Login</div>
+        <div class="link" (click)="onAuthClick()">{{ isLoggedIn ? 'Logout' : 'Login' }}</div>
     </div>
 </div>  

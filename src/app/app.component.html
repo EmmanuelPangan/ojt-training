@@ -2,8 +2,8 @@
 
   <div class="main-layout">
     <app-left-sidebar
-  [class.closed]="isSidebarOpen"
-  [isOpen]="!isSidebarOpen"
+  [class.closed]="!isSidebarOpen"
+  [isOpen]="isSidebarOpen"
   class="sidebar">
 </app-left-sidebar>
 
@@ -14,16 +14,14 @@
         (logoClick)="toggleSidebar()">
       </app-head>
 
-      <app-header
-        class="animate"
-        *ngIf="showHeader">
-      </app-header>
+    
 
       <div class="content">
         <router-outlet></router-outlet>
       </div>
+      <app-foot></app-foot>
     </div>
   </div>
 
-  <app-foot></app-foot>
+  
 </div>
