@@ -19,6 +19,13 @@ export class HeadComponent implements OnInit {
     
   }
 
+  onLogoClick (event:MouseEvent)
+  {
+    event.preventDefault();
+    event.stopPropagation();
+    this.logoClick.emit();
+  }
+
   constructor() { }
 
   ngOnInit() {

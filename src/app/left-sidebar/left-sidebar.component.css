@@ -24,3 +24,12 @@
   padding: 0;
   margin: 0;
 }
+
+.sidebarlist
+{
+  cursor: pointer;
+  &:hover
+            {
+                color: blue;
+            }
+}
