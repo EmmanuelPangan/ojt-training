@@ -4,25 +4,40 @@
   height: 100vh;
 }
 
+/* middle area only */
 .main-layout {
   display: flex;
   flex: 1;
+  min-height: 0;
 }
 
+/* sidebar */
 .sidebar {
   width: 220px;
+  flex-shrink: 0;
   transition: width 0.3s ease;
+  overflow: hidden;
 }
 
+/* collapsed state */
+.sidebar.closed {
+  width: 0;
+}
+
+/* right side */
 .right-panel {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
-app-header {
-  
-}
-
+/* scrolling content */
 .content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.top-bar-wrapper {
+  position: relative; /* anchor */
 }

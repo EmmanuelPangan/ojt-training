@@ -1,18 +1,22 @@
 <div class="app-container">
-  <app-head (logoClick)="toggleSidebar()"></app-head>
 
   <div class="main-layout">
     <app-left-sidebar
-      [isOpen]="isSidebarOpen"
-      class="sidebar">
-    </app-left-sidebar>
+  [class.closed]="isSidebarOpen"
+  [isOpen]="!isSidebarOpen"
+  class="sidebar">
+</app-left-sidebar>
 
     <div class="right-panel">
+
+      <!-- MOVE app-head here -->
+      <app-head
+        (logoClick)="toggleSidebar()">
+      </app-head>
+
       <app-header
         class="animate"
-        [class.shifted]="isSidebarOpen"
         *ngIf="showHeader">
-        
       </app-header>
 
       <div class="content">
