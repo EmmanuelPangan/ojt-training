@@ -1,1 +1,55 @@
-<p>place works!</p>
+<div class="location-container">
+    <form [formGroup]="locationForm">
+    
+
+    <h2>Location</h2>
+    <label>Province</label>
+    <div>
+        <select formControlName="province" (change)="onProvinceChange()">
+            <option value="" class="center">Select Province</option>
+            <option *ngFor="let p of provinces" [value]="p.province || p.name || p"
+            class="center">
+            {{ p.province }}
+            </option>
+        </select>
+    </div>
+
+
+    <label>Town / City</label>
+    <div>
+        <select
+            formControlName="townCity"
+            (change)="onTownCityChange()"
+            [disabled]="!townCities.length"
+            class="center"
+        >
+            <option value="">Select Town/City</option>
+            <option *ngFor="let t of townCities" [value]="t.townOrCity || t.name || t"
+            class="center">
+            {{ t.townOrCity}}
+            </option>
+        </select>
+    </div>
+
+    <label>Barangay</label>
+    <div>
+        <select
+            formControlName="barangay"
+            [disabled]="!barangays.length"
+        >
+            <option value="">Select Barangay</option>
+            <option *ngFor="let b of barangays" [value]="b.barangay || b.name || b"
+            class="center">
+            {{ b.barangay || b.name || b }}
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <button>
+            Save Location
+        </button>
+    </div>
+
+    </form>
+</div>

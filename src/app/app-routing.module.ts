@@ -9,16 +9,18 @@ import { OrderComponent } from './order/order.component';
 import { HeaderComponent } from './header/header.component'; 
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
-const routes : Routes =
-[
-  {path:'', redirectTo:'/home', pathMatch: 'full'},
-  {path:'home', component:HeaderComponent, canActivate:[AuthGuard]},
-  {path:'about', component:AboutComponent, canActivate:[AuthGuard]},
-  {path: 'details', component:DetailsComponent, canActivate:[AuthGuard]},
-  {path:'place', component:PlaceComponent, canActivate:[AuthGuard]},
-  {path:'orders', component:OrderComponent,canActivate:[AuthGuard]},
-  {path:'login', component:LoginComponent},
-  {path:'register', component:RegisterComponent}
+import { GuestGuard } from './guest.guard';
+const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
+  { path: 'home', component: HeaderComponent, canActivate: [AuthGuard] },
+  { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
+  { path: 'details', component: DetailsComponent, canActivate: [AuthGuard] },
+  { path: 'place', component: PlaceComponent, canActivate: [AuthGuard] },
+  { path: 'orders', component: OrderComponent, canActivate: [AuthGuard] },
+
+  { path: 'login', component: LoginComponent, canActivate: [GuestGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [GuestGuard] }
 ];
 
 @NgModule({

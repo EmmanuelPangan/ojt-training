@@ -17,6 +17,7 @@ import { OrderComponent } from './order/order.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { AlertMessageComponent } from './alert-message/alert-message.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { AlertMessageComponent } from './alert-message/alert-message.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],
