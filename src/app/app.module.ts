@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderComponent } from './order/order.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { AlertMessageComponent } from './alert-message/alert-message.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { RegisterComponent } from './register/register.component';
     PlaceComponent,
     OrderComponent,
     RegisterComponent,
+    AlertMessageComponent,
   ],
   imports: [
     BrowserModule,

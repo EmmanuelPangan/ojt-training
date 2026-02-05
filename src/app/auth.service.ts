@@ -9,8 +9,7 @@ export class AuthService {
   private readonly DEMO_PASSWORD = 'password123';
 
   register(email: string, password: string): boolean {
-    // In a real application, you would send a request to the backend to register the user.
-    // Here, we simply return true for demonstration purposes.
+    
     return true;
   }
 

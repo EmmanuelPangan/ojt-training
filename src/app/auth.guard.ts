@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { AlertServiceService } from './alert/alert-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertServiceService
   ) {}
 
   canActivate(): boolean {
@@ -17,6 +19,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
+    this.alertService.error('You must be logged in to access this page.');
     this.router.navigate(['/login']);
     return false;
   }
