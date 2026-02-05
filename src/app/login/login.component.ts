@@ -18,10 +18,14 @@ export class LoginComponent {
     private router: Router
   ) { }
   login() {
+    console.log('Login button clicked');
     const success = this.authService.login(this.username, this.password);
+    console.log('AuthService.isLogin():', this.authService.isLogin());
     if (success) {
+      console.log('Routing to exercise');
       this.router.navigate(['/home']);
     } else {
+      console.log('Invalid credentials');
       this.error = 'Invalid username or password';
     }
   }

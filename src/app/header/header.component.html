@@ -2,8 +2,15 @@
     <span class="title">{{title}}</span>
     <span class="spacer"></span>
     <nav class="nav-links">
-        <a mat-button routerLink="/excercise" routerLinkActive="active">Excercise</a>
+        <a mat-button routerLink="/excercise">Excercise</a>
         <a mat-button routerLink="/listcomponent" routerLinkActive="active">List Component</a>
-        <a mat-button routerLink="/LogIn" routerLinkActive="active">LogIn</a>
+
+        <a *ngIf="!authService.isLogin()" mat-button routerLink="/login" routerLinkActive="active">
+            Login
+        </a>
+
+        <button *ngIf="authService.isLogin()" mat-button (click)="logout()">
+            Logout
+        </button>
     </nav>
 </mat-toolbar>

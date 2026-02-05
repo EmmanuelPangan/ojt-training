@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +12,14 @@ export class AuthService {
       this.loggedIn = true;
       return true;
     }
+    console.log('Login FAILED');
     return false;
   }
   logout() {
     this.loggedIn = false;
   }
-  islogin(): boolean {
+
+  isLogin(): boolean {
     return this.loggedIn;
   }
 }
