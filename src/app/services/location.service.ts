@@ -22,6 +22,6 @@ export class LocationService {
   getBarangays(province: string, townCity: string) : Observable<any[]>
   {
     return this.http.get<any[]>
-    (`${this.baseUrl}/Barangays/${province}/townOrCity=${townCity}`);
+    (`${this.baseUrl}/Barangays/${province}/${townCity}`);
   }
 }
