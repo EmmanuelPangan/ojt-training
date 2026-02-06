@@ -30,6 +30,14 @@ export class PlaceComponent implements OnInit {
     });
 
     this.loadProvinces();
+    this.loadLocationFromLocalStorage();
+  }
+
+  loadLocationFromLocalStorage() {
+    const savedData = localStorage.getItem('savedLocation');
+    if (savedData) {
+      this.savedLocation = JSON.parse(savedData);
+    }
   }
 
   loadProvinces() {
@@ -103,6 +111,7 @@ export class PlaceComponent implements OnInit {
       console.log('Location saved successfully', response);
 
       this.savedLocation = response;
+      localStorage.setItem('savedLocation', JSON.stringify(response));
     }, error => {
       console.error('Error saving location', error);
     });
