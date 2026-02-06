@@ -1,24 +1,21 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+// sidebar.component.ts
+import { Component, OnInit } from '@angular/core';
+import { SidebarService } from 'src/app/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+
   isClosed = true;
 
-  @Output() statusChange = new EventEmitter<boolean>();
+  constructor(private sidebarService: SidebarService) { }
 
-  openSidebar() {
-    this.isClosed = false;
-    this.statusChange.emit(this.isClosed);
+  ngOnInit() {
+    this.sidebarService.isClosed$.subscribe(value => {
+      this.isClosed = value;
+    });
   }
-
-  closeSidebar() {
-    this.isClosed = true;
-    this.statusChange.emit(this.isClosed);
-  }
-
-
 }

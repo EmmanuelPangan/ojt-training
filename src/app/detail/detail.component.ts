@@ -7,6 +7,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  itemId!: number;
+  name = '';
+  description = '';
   item: any;
   items = [
     { id: 1, name: 'Interpolation', description: 'a mathematical method used to estimate unknown values that fall within the range of a discrete set of known data points.' },
@@ -15,8 +18,15 @@ export class DetailComponent implements OnInit {
   ];
   constructor(private route: ActivatedRoute) { }
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.item = this.items.find(i => i.id === id);
-  }
+    this.itemId = Number(this.route.snapshot.paramMap.get('id'));
 
+    const item = this.items.find(i => i.id === this.itemId);
+    if (item) {
+      this.name = item.name;
+      this.description = item.description;
+    } else {
+      this.name = 'Item not found';
+      this.description = '';
+    }
+  }
 }

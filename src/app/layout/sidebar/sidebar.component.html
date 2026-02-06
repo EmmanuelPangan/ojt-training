@@ -1,8 +1,6 @@
-<div class="sidebar" [class.closed]="isClosed" (mouseenter)="openSidebar()" (mouseleave)="closeSidebar()">
-    <h2 class="menu-icon">☰</h2>
-    <ul>
-        <li routerLink="/home" routerLinkActive="active">Home</li>
-        <li routerLink="/about" routerLinkActive="active">About</li>
-        <li routerLink="/contact" routerLinkActive="active">Contact</li>
+<div class="sidebar" [class.closed]="isClosed">
+    <ul *ngIf="!isClosed">
+        <li routerLink="/excercise" routerLinkActive="active">Excercise</li>
+        <li routerLink="/listcomponent" routerLinkActive="active">ListComponent</li>
     </ul>
 </div>

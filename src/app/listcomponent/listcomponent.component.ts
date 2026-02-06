@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ItemService } from '../item.service';
+
 
 @Component({
   selector: 'app-listcomponent',
@@ -6,13 +9,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./listcomponent.component.css']
 })
 export class ListcomponentComponent {
-  items = [
+  items: any;
+  private item = [
     {
-      id: 1, name: 'Interpolation', description: 'a mathematical method used to estimate unknown values that fall within the range of a discrete set of known data points.'
+      id: 1,
+      name: 'Interpolation',
+      description: 'A mathematical method used to estimate unknown values.'
     },
-    { id: 2, name: 'Event Binding', description: 'connects user actions—such as clicks, keystrokes, or mouse movements—to component methods.' }
+    {
+      id: 2,
+      name: 'Data Binding',
+      description: 'A technique to synchronize data between model and view.'
+    }
   ];
+  constructor(
+    private itemService: ItemService,
+    private router: Router
+  ) { }
 
+  selectItem(item: any) {
+    this.items = item;
+  }
+  ngOnInit() {
+    this.items = this.itemService.getItems();
+  }
 
+  viewDetail(id: number) {
+    this.router.navigate(['/detail', id]);
+  }
 
 }
+

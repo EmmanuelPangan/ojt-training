@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { MypageComponent } from './pages/mypage/mypage.component';
 import { CustomPipe } from './custom.pipe';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -23,6 +22,7 @@ import { DetailComponent } from './detail/detail.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsComponent } from './forms/forms.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -35,7 +35,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MypageComponent,
     CustomPipe,
     HeaderComponent,
     FooterComponent,
@@ -46,7 +45,8 @@ const routes: Routes = [
     ExcerciseComponent,
     ListcomponentComponent,
     DetailComponent,
-    LoginComponent
+    LoginComponent,
+    FormsComponent
   ],
 
   imports: [
@@ -66,3 +66,4 @@ const routes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

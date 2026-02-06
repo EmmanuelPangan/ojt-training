@@ -1,4 +1,4 @@
-<h2>{{ item?.name }}</h2>
-<p>{{ item?.description }}</p>
-
-<a routerLink="/">⬅ Back to list</a>
+<div *ngFor='let item of items '>
+    <h2>{{ item?.name }}</h2>
+    <p>{{ item?.description }}</p>
+</div><a routerLink="/">⬅ Back to list</a>

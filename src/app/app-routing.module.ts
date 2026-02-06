@@ -5,6 +5,8 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { ExcerciseComponent } from './excercise/excercise.component';
 import { ListcomponentComponent } from './listcomponent/listcomponent.component';
+import { DetailComponent } from './detail/detail.component';
+
 
 
 const routes: Routes = [
@@ -12,6 +14,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'excercise', component: ExcerciseComponent, canActivate: [AuthGuard] },
   { path: 'listcomponent', component: ListcomponentComponent, canActivate: [AuthGuard] },
+  {path: 'detailcomponent', component: DetailComponent, canActivate: [AuthGuard]},
+  {path: 'interpolation', component: DetailComponent, canActivate: [AuthGuard]},
+  { path: 'detail/:id', component: DetailComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' }
 ];

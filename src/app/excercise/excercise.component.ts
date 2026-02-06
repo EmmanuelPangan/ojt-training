@@ -7,6 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExcerciseComponent implements OnInit {
 
+  title = 'LOG IN';
+  username = 'bea';
+  age = "22";
+  disable = true;
+  values = "";
+
+  onclick() {
+    this.values = "hi";
+
+  }
+  login = false;
+  Click() {
+    this.login = true;
+  }
+  users = ['bea', 'kei', 'claire'];
+
+  today: number = Date.now();
   constructor() { }
 
   ngOnInit() {
