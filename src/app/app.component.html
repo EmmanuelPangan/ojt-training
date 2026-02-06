@@ -1,8 +1,9 @@
-<app-header [title]="'Welcome to My Activity'">
-</app-header>
-<app-sidebar (sidebarState)="onSidebarChange($event)"></app-sidebar>
-<app-footer></app-footer>
+<app-header [title]="'Welcome to My Activity'"> </app-header>
 
-<div class="content" [class.expanded]="!isSidebarClosed">
+<div style="display: flex; ">
+  <app-sidebar (sidebarState)="onSidebarChange($event)"></app-sidebar>
+  <div class="content" [class.expanded]="!isClosed">
     <router-outlet></router-outlet>
+  </div>
 </div>
+<app-footer></app-footer>

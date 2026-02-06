@@ -1,29 +1,43 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { AuthGuard } from './auth.guard';
-import { LoginComponent } from './login/login.component';
-import { ExcerciseComponent } from './excercise/excercise.component';
-import { ListcomponentComponent } from './listcomponent/listcomponent.component';
-import { DetailComponent } from './detail/detail.component';
-
-
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { HomeComponent } from "./pages/home/home.component";
+import { AuthGuard } from "./auth.guard";
+import { LoginComponent } from "./login/login.component";
+import { ExcerciseComponent } from "./excercise/excercise.component";
+import { ListcomponentComponent } from "./listcomponent/listcomponent.component";
+import { DetailComponent } from "./detail/detail.component";
+import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'excercise', component: ExcerciseComponent, canActivate: [AuthGuard] },
-  { path: 'listcomponent', component: ListcomponentComponent, canActivate: [AuthGuard] },
-  {path: 'detailcomponent', component: DetailComponent, canActivate: [AuthGuard]},
-  {path: 'interpolation', component: DetailComponent, canActivate: [AuthGuard]},
-  { path: 'detail/:id', component: DetailComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' }
+  { path: "login", component: LoginComponent },
+  { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: "excercise",
+    component: ExcerciseComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "listcomponent",
+    component: ListcomponentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "detailcomponent",
+    component: DetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "interpolation",
+    component: DetailComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: "detail/:id", component: DetailComponent },
+  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "**", component: PagenotfoundComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {}
