@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  EApiUrl: "https://apidev.usl.edu.ph/sui-dev-page/index.html"
 };
 
 /*

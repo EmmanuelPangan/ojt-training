@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.fetchData();
+    // this.fetchData();
   }
 
   fetchData(): void {

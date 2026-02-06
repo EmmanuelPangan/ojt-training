@@ -22,16 +22,11 @@ import { DetailComponent } from "./detail/detail.component";
 import { LoginComponent } from "./login/login.component";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { FormsComponent } from "./forms/forms.component";
 import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
-
-const routes: Routes = [
-  { path: "home", component: HomeComponent },
-  { path: "excercise", component: ExcerciseComponent },
-  { path: "listcomponent", component: ListcomponentComponent },
-  { path: "detail/:id", component: DetailComponent },
-  { path: "", redirectTo: "home", pathMatch: "full" }
-];
+import { AddressComponent } from "./address/address.component";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -47,8 +42,8 @@ const routes: Routes = [
     ListcomponentComponent,
     DetailComponent,
     LoginComponent,
-    FormsComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    AddressComponent
   ],
 
   imports: [
@@ -60,9 +55,11 @@ const routes: Routes = [
     MatButtonModule,
     MatMenuModule,
     RouterModule,
-    RouterModule.forRoot(routes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

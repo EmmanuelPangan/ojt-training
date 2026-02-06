@@ -1,19 +1,23 @@
 <mat-toolbar color="primary" class="head">
-    <h2 class="menu-icon" (click)="toggleSidebar()">☰</h2>
-    <span class="title">{{title}}</span>
+  <h2 class="menu-icon" (click)="toggleSidebar()">☰</h2>
+  <span class="title">{{ title }}</span>
 
-    <span class="spacer"></span>
-    <nav class="nav-links">
-        <a mat-icon routerLink="/home" routerLinkActive="active">Home</a>
-        <a mat-button routerLink="" routerLinkActive="active">Details</a>
+  <span class="spacer"></span>
+  <nav class="nav-links">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a mat-button routerLink="/address" routerLinkActive="active">Address</a>
 
+    <a
+      *ngIf="!authService.isLogin()"
+      mat-button
+      routerLink="/login"
+      routerLinkActive="active"
+    >
+      Login
+    </a>
 
-        <a *ngIf="!authService.isLogin()" mat-button routerLink="/login" routerLinkActive="active">
-            Login
-        </a>
-
-        <button *ngIf="authService.isLogin()" mat-button (click)="logout()">
-            Logout
-        </button>
-    </nav>
+    <button *ngIf="authService.isLogin()" mat-button (click)="logout()">
+      Logout
+    </button>
+  </nav>
 </mat-toolbar>

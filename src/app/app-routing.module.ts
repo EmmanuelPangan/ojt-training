@@ -7,6 +7,7 @@ import { ExcerciseComponent } from "./excercise/excercise.component";
 import { ListcomponentComponent } from "./listcomponent/listcomponent.component";
 import { DetailComponent } from "./detail/detail.component";
 import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
+import { AddressComponent } from "./address/address.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: "detail/:id", component: DetailComponent },
+  { path: "address", component: AddressComponent, canActivate: [AuthGuard] },
   { path: "", redirectTo: "login", pathMatch: "full" },
   { path: "**", component: PagenotfoundComponent }
 ];

@@ -1,0 +1,50 @@
+<form class="address-form">
+  <div class="form-section">
+    <h2 class="get">GET API</h2>
+    <mat-form-field>
+      <mat-label class="label">Province</mat-label>
+      <mat-select
+        [(ngModel)]="selectedProvince"
+        name="province"
+        (selectionChange)="getTownsCities(selectedProvince)"
+      >
+        <mat-option *ngFor="let p of province" [value]="p.province">
+          {{ p.province }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>Province: {{ selectedProvince }}</p>
+  </div>
+
+  <div class="form-section" *ngIf="townsCities != undefined">
+    <mat-form-field>
+      <mat-label class="label">TownsCities</mat-label>
+      <mat-select
+        [(ngModel)]="selectedTownCity"
+        name="townOrCity"
+        (selectionChange)="getBarangays(selectedProvince, selectedTownCity)"
+      >
+        <mat-option *ngFor="let t of townsCities" [value]="t.townOrCity">
+          {{ t.townOrCity }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>TownsCities: {{ selectedTownCity }}</p>
+  </div>
+
+  <div class="form-section" *ngIf="barangays != undefined">
+    <mat-form-field>
+      <mat-label class="label">Barangay</mat-label>
+      <mat-select [(ngModel)]="selectedBarangays" name="barangay">
+        <mat-option *ngFor="let b of barangays" [value]="b.barangay">
+          {{ b.barangay }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>Barangay: {{ selectedBarangays }}</p>
+  </div>
+
+  <button type="submit">
+    Save Address
+  </button>
+</form>
