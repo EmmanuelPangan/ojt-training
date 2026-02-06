@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { GuestGuard } from './guest.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'orders', component: OrderComponent, canActivate: [AuthGuard] },
 
   { path: 'login', component: LoginComponent, canActivate: [GuestGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [GuestGuard] }
+  { path: 'register', component: RegisterComponent, canActivate: [GuestGuard]},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

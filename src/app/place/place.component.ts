@@ -15,6 +15,8 @@ export class PlaceComponent implements OnInit {
   townCities: any[] = [];
   barangays: any[] = [];
 
+  savedLocation: any = null;
+
   constructor(
     private fb: FormBuilder,
     private locationService: LocationService
@@ -87,4 +89,23 @@ export class PlaceComponent implements OnInit {
       }
     });
   }
+  
+  saveLocation()
+  {
+    const payload = 
+    {
+      province : this.locationForm.value.province,
+      townCity : this.locationForm.value.townCity,
+      barangay : this.locationForm.value.barangay
+    };
+
+    this.locationService.saveLocation(payload).subscribe(response => {
+      console.log('Location saved successfully', response);
+
+      this.savedLocation = response;
+    }, error => {
+      console.error('Error saving location', error);
+    });
+  }
+  
 }

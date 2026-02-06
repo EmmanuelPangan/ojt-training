@@ -1,5 +1,5 @@
 <div class="location-container">
-    <form [formGroup]="locationForm">
+    <form [formGroup]="locationForm" (ngSubmit)="saveLocation()">
     
 
     <h2>Location</h2>
@@ -36,6 +36,7 @@
         <select
             formControlName="barangay"
             [disabled]="!barangays.length"
+            class="center"
         >
             <option value="">Select Barangay</option>
             <option *ngFor="let b of barangays" [value]="b.barangay || b.name || b"
@@ -46,10 +47,16 @@
     </div>
 
     <div>
-        <button>
+        <button type="submit" [disabled]="locationForm.invalid">
             Save Location
         </button>
     </div>
 
     </form>
+    <div *ngIf="savedLocation">
+        <h3>Saved Location:</h3>
+        <p>Province: {{ savedLocation.province }}</p>
+        <p>Town/City: {{ savedLocation.townCity }}</p>
+        <p>Barangay: {{ savedLocation.barangay }}</p>
+
 </div>
