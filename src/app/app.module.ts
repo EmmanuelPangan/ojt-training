@@ -19,6 +19,11 @@ import { RegisterComponent } from './register/register.component';
 import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AddTaskComponent } from './order/add-task/add-task.component';
+import { EditTaskComponent } from './order/edit-task/edit-task.component';
+import { FormsModule } from '@angular/forms';
+
+import { DeleteTaskComponent } from './order/delete-task/delete-task.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,13 +40,17 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     RegisterComponent,
     AlertMessageComponent,
     PageNotFoundComponent,
+    AddTaskComponent,
+    EditTaskComponent,
+    DeleteTaskComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

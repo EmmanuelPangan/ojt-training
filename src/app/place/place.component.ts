@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { LocationService } from '../services/location.service';
-
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-place',
   templateUrl: './place.component.html',
@@ -11,11 +11,15 @@ export class PlaceComponent implements OnInit {
 
   locationForm!: FormGroup;
 
+  
+
   provinces: any[] = [];
   townCities: any[] = [];
   barangays: any[] = [];
 
   savedLocation: any = null;
+  allProvinces: any[] = [];
+  showDropdown = false;
 
   constructor(
     private fb: FormBuilder,
@@ -41,13 +45,33 @@ export class PlaceComponent implements OnInit {
   }
 
   loadProvinces() {
-    this.locationService.getProvinces().subscribe((data: any) => {
+    this.locationService.getProvinces()
+    .pipe(filter((data: any[]) => Array.isArray(data) && data.length > 0))
+    .subscribe((data: any) => {
       this.provinces = data;
+      this.allProvinces = data;
     });
   }
 
   onProvinceChange() {
     const province = this.locationForm.value.province;
+    
+    // Check if input matches an exact province
+    const exactMatch = this.allProvinces.some(p => 
+      p.province.toLowerCase() === province.toLowerCase()
+    );
+
+    // Filter provinces based on input
+    const search = province ? province.toLowerCase() : '';
+    if (search) {
+      this.provinces = this.allProvinces.filter(p =>
+        p.province.toLowerCase().includes(search)
+      );
+      this.showDropdown = !exactMatch && this.provinces.length > 0;
+    } else {
+      this.provinces = this.allProvinces;
+      this.showDropdown = false;
+    }
 
     this.townCities = [];
     this.barangays = [];
@@ -59,19 +83,28 @@ export class PlaceComponent implements OnInit {
     }
 
     const townCityControl = this.locationForm.get('townCity');
-    if (!province) {
+    if (!province || !exactMatch) {
       if (townCityControl) {
         townCityControl.disable();
       }
       return;
     }
 
-    this.locationService.getTownsCities(province).subscribe((data: any) => {
+    this.locationService.getTownsCities(province)
+    .pipe(filter((data: any[]) => Array.isArray(data)))
+    .subscribe((data: any) => {
       this.townCities = data;
       if (townCityControl) {
         townCityControl.enable();
       }
     });
+  }
+
+  selectProvince(province: any) {
+    const provinceValue = province.province || province.name || province;
+    this.locationForm.patchValue({ province: provinceValue });
+    this.showDropdown = false;
+    this.onProvinceChange();
   }
 
   onTownCityChange() {
@@ -90,7 +123,9 @@ export class PlaceComponent implements OnInit {
       return;
     }
 
-    this.locationService.getBarangays(province, townCity).subscribe((data: any) => {
+    this.locationService.getBarangays(province, townCity)
+    .pipe(filter((data: any[]) => Array.isArray(data)))
+    .subscribe((data: any) => {
       this.barangays = data;
       if (barangayControl) {
         barangayControl.enable();

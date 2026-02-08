@@ -3,15 +3,24 @@
     
 
     <h2>Location</h2>
+
     <label>Province</label>
-    <div>
-        <select formControlName="province" (change)="onProvinceChange()">
-            <option value="" class="center">Select Province</option>
-            <option *ngFor="let p of provinces" [value]="p.province || p.name || p"
-            class="center">
-            {{ p.province }}
-            </option>
-        </select>
+    <div class="search-container">
+        <input
+            type="text"
+            placeholder="Search or select province..."
+            formControlName="province"
+            (input)="onProvinceChange()"
+            (focus)="showDropdown = true"
+            class="search-input"
+        />
+        <div *ngIf="showDropdown && provinces.length > 0" class="dropdown-list">
+            <div *ngFor="let p of provinces" 
+                 (click)="selectProvince(p)"
+                 class="dropdown-item">
+                {{ p.province }}
+            </div>
+        </div>
     </div>
 
 
