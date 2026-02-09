@@ -1,36 +1,54 @@
-#container
-{
+#container {
+  display: flex;
+  padding: 20px 30px;
+  background-color: lightblue;
+  cursor: pointer;
+
+  #links {
+    flex-grow: 1;
     display: flex;
-    padding: 20px 30px;
-    
-    background-color: lightblue;
+    gap: 20px;
+    justify-content: right;
+    align-items: center;
+  }
+
+  .link {
     cursor: pointer;
 
-    
-    #links
-    {
-        flex-grow: 1;
-        display: flex;
-        gap: 20px;
-        justify-content: right;
-
-        
+    &:hover {
+      color: blue;
     }
-    .link
-        {
-            cursor: pointer;
-            &:hover
-            {
-                color: blue;
-            }
-        }
-}
+  }
 
-.point
-{
+  /* 🔽 DROPDOWN STYLES */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+  }
+
+  .dropdown-item {
+    padding: 10px 15px;
     cursor: pointer;
-            &:hover
-            {
-                color: blue;
-            }
+    white-space: nowrap;
+
+    &:hover {
+      background-color: #f1f1f1;
+      color: blue;
+    }
+  }
+
+  /* 🔥 SHOW ON HOVER */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
 }

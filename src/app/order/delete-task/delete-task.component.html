@@ -1,1 +1,14 @@
-<p>delete-task works!</p>
+<div class="task-container">
+  <h3>Delete Order</h3>
+
+  <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()" class="task-form">
+    <div class="form-group">
+      <label for="id">Order ID</label>
+      <input type="number" id="id" formControlName="id" placeholder="Enter order ID to delete">
+    </div>
+
+    <button type="submit" class="btn btn-danger">
+      Delete Order
+    </button>
+  </form>
+</div>

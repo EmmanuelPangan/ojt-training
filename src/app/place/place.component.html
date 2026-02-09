@@ -13,6 +13,7 @@
             (input)="onProvinceChange()"
             (focus)="showDropdown = true"
             class="search-input"
+            class="center"
         />
         <div *ngIf="showDropdown && provinces.length > 0" class="dropdown-list">
             <div *ngFor="let p of provinces" 

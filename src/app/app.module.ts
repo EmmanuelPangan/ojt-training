@@ -22,7 +22,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AddTaskComponent } from './order/add-task/add-task.component';
 import { EditTaskComponent } from './order/edit-task/edit-task.component';
 import { FormsModule } from '@angular/forms';
-
 import { DeleteTaskComponent } from './order/delete-task/delete-task.component';
 @NgModule({
   declarations: [

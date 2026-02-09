@@ -1,1 +1,89 @@
-<p>Mii Project works!</p>
+<div class="order-management-container">
+  <h2>Order Management</h2>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button [class.active]="activeTab === 'add'" (click)="switchTab('add')">Add</button>
+    <button [class.active]="activeTab === 'edit'" (click)="switchTab('edit')">Edit</button>
+    <button [class.active]="activeTab === 'delete'" (click)="switchTab('delete')">Delete</button>
+  </div>
+
+  <hr>
+
+  <!-- Add Tab -->
+  <div *ngIf="activeTab === 'add'" class="tab-content">
+    <form [formGroup]="addForm" (ngSubmit)="onAdd()" class="task-form">
+      <div class="form-group">
+        <label for="addOrderName">Order Name</label>
+        <input type="text" id="addOrderName" formControlName="orderName" placeholder="Enter order name">
+      </div>
+
+      <div class="form-group">
+        <label for="addQuantity">Quantity</label>
+        <input type="number" id="addQuantity" formControlName="quantity" placeholder="Enter quantity">
+      </div>
+
+      <div class="form-group">
+        <label for="addPrice">Price</label>
+        <input type="number" id="addPrice" formControlName="price" placeholder="Enter price">
+      </div>
+
+      <button type="submit" [disabled]="addForm.invalid" class="btn btn-primary">
+        Add Order
+      </button>
+    </form>
+  </div>
+
+  <!-- Edit Tab -->
+  <div *ngIf="activeTab === 'edit'" class="tab-content">
+    <form [formGroup]="editForm" (ngSubmit)="onEdit()" class="task-form">
+      <div class="form-group">
+        <label for="editId">Order ID</label>
+        <input type="number" id="editId" formControlName="id" placeholder="Enter order ID">
+      </div>
+
+      <div class="form-group">
+        <label for="editOrderName">Order Name</label>
+        <input type="text" id="editOrderName" formControlName="orderName" placeholder="Enter new order name">
+      </div>
+
+      <div class="form-group">
+        <label for="editQuantity">Quantity</label>
+        <input type="number" id="editQuantity" formControlName="quantity" placeholder="Enter new quantity">
+      </div>
+
+      <div class="form-group">
+        <label for="editPrice">Price</label>
+        <input type="number" id="editPrice" formControlName="price" placeholder="Enter new price">
+      </div>
+
+      <button type="submit" [disabled]="editForm.invalid || !isEditValid()" class="btn btn-warning">
+        Update Order
+      </button>
+    </form>
+  </div>
+
+  <!-- Delete Tab -->
+  <div *ngIf="activeTab === 'delete'" class="tab-content">
+    <form [formGroup]="deleteForm" (ngSubmit)="onDelete()" class="task-form">
+      <div class="form-group">
+        <label for="deleteId">Order ID</label>
+        <input type="number" id="deleteId" formControlName="id" placeholder="Enter order ID to delete">
+      </div>
+
+      <button type="submit" [disabled]="!isDeleteValid()" class="btn btn-danger">
+        Delete Order
+      </button>
+    </form>
+  </div>
+
+  <hr>
+
+  <!-- Orders List -->
+  <h3>Current Orders</h3>
+  <ul>
+    <li *ngFor="let o of orders">
+      <strong>{{ o.orderName }}</strong> (Qty: {{ o.quantity }}, Price: {{ o.price }}, ID: {{ o.id }})
+    </li>
+  </ul>
+</div>

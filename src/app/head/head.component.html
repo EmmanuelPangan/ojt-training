@@ -1,18 +1,33 @@
 <div id="container" class="col-sm">
-    <div
-      id="logo"
-      class="point"
-      (click)="onLogoClick($event)">
-        Logo
+  <div
+    id="logo"
+    class="point"
+    (click)="onLogoClick($event)">
+    Logo
+  </div>
+
+  <div id="links">
+    <div class="link" routerLink="/home">Home</div>
+    <div class="link" routerLink="/about">About</div>
+    <div class="link" routerLink="/place">Place</div>
+    <div class="link" routerLink="/details">Details</div>
+
+    <!-- 🔽 Mini Project Dropdown -->
+    <div class="dropdown">
+      <div class="link">
+        Mini Project
+      </div>
+
+      <div class="dropdown-menu">
+        <div class="dropdown-item" routerLink="/orders/add">Add Order</div>
+        <div class="dropdown-item" routerLink="/orders/edit">Edit Order</div>
+        <div class="dropdown-item" routerLink="/orders/delete">Delete Order</div>
+      </div>
     </div>
 
-    <div id="links">
-        <div class="link" routerLink="/home">Home</div>
-        <div class="link" routerLink="/about">About</div>
-        <div class="link" routerLink="/place">Place</div>
-        <div class="link" routerLink="/details">Details</div>
-        <div class="link" routerLink="/orders">Mini Project</div>
-        <div>|</div>
-        <div class="link" (click)="onAuthClick()">{{ isLoggedIn ? 'Logout' : 'Login' }}</div>
+    <div>|</div>
+    <div class="link" (click)="onAuthClick()">
+      {{ isLoggedIn ? 'Logout' : 'Login' }}
     </div>
-</div>  
+  </div>
+</div>

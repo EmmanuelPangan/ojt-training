@@ -1,1 +1,29 @@
-<p>edit-task works!</p>
+<div class="task-container">
+  <h3>Edit Order</h3>
+
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="task-form">
+    <div class="form-group">
+      <label for="id">Order ID</label>
+      <input type="number" id="id" formControlName="id" placeholder="Enter order ID">
+    </div>
+
+    <div class="form-group">
+      <label for="orderName">Order Name</label>
+      <input type="text" id="orderName" formControlName="orderName" placeholder="Enter new order name">
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input type="number" id="quantity" formControlName="quantity" placeholder="Enter new quantity">
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" id="price" formControlName="price" placeholder="Enter new price">
+    </div>
+
+    <button type="submit" [disabled]="editForm.invalid" class="btn btn-warning">
+      Update Order
+    </button>
+  </form>
+</div>
