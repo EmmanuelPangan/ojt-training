@@ -20,19 +20,25 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  onSubmit()
-  {
-    const newOrder = 
-    {
-      id : Date.now(),
-      ...this.addForm.value
-    };
+  onSubmit() {
+  
+  const orders = this.orderService.getOrders();
 
-    this.orderService.addOrder(newOrder);
-    console.log(newOrder);
-    alert('Order Added!');
-    this.addForm.reset();
-  }
+  // Determine the next chronological ID
+  const nextId = orders.length > 0 
+    ? Math.max(...orders.map(o => o.id)) + 1  
+    : 1;                                     
+
+  const newOrder = {
+    id: nextId,
+    ...this.addForm.value
+  };
+
+  this.orderService.addOrder(newOrder);
+  console.log(newOrder);
+  alert('Order Added!');
+  this.addForm.reset();
+}
 
   
   

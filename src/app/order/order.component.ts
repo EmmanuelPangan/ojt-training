@@ -116,24 +116,30 @@ export class OrderComponent implements OnInit {
   }
 
   // --- Delete ---
-  onDelete() {
-    const id = this.deleteForm.value.id;
-    const existingOrder = this.orderService.getOrderById(id);
+onDelete() {
+  const id = Number(this.deleteForm.value.id); // Convert to number
+  const existingOrder = this.orderService.getOrderById(id);
 
-    if (!existingOrder) {
-      alert('Order ID not found!');
-      return;
-    }
-
-    if (confirm(`Are you sure you want to delete "${existingOrder.orderName}"?`)) {
-      this.orderService.deleteOrder(id);
-      this.deleteForm.reset();
-      alert('Order Deleted!');
-    }
+  if (!existingOrder) {
+    alert('Order ID not found!');
+    return;
   }
 
-  isDeleteValid(): boolean {
-    const id = this.deleteForm.value.id;
-    return !!this.orderService.getOrderById(id);
+  if (confirm(`Are you sure you want to delete "${existingOrder.orderName}"?`)) {
+    this.orderService.deleteOrder(id); // Call service to delete
+    this.deleteForm.reset();           // Reset dropdown
+    alert('Order Deleted!');
   }
+}
+
+// Check if a valid order is selected
+isDeleteValid(): boolean {
+  const id = Number(this.deleteForm.value.id); // Convert to number
+  return !!this.orderService.getOrderById(id);
+}
+
+// When clicking on the list item, select it in the dropdown
+selectOrderForDelete(id: number) {
+  this.deleteForm.patchValue({ id }); // Keep as number; conversion handled in onDelete
+}
 }

@@ -9,6 +9,15 @@
   </div>
 
   <hr>
+  <!-- Current Orders List -->
+  <h3>Current Orders</h3>
+  <ul class="orders-list">
+    <li *ngFor="let o of orders"
+        [class.selected]="deleteForm.value.id === o.id"
+        (click)="selectOrderForDelete(o.id)">
+      <strong>{{ o.orderName }}</strong> (Qty: {{ o.quantity }}, Price: {{ o.price }}, ID: {{ o.id }})
+    </li>
+  </ul>
 
   <!-- Add Tab -->
   <div *ngIf="activeTab === 'add'" class="tab-content">
@@ -67,8 +76,13 @@
   <div *ngIf="activeTab === 'delete'" class="tab-content">
     <form [formGroup]="deleteForm" (ngSubmit)="onDelete()" class="task-form">
       <div class="form-group">
-        <label for="deleteId">Order ID</label>
-        <input type="number" id="deleteId" formControlName="id" placeholder="Enter order ID to delete">
+        <label for="deleteId">Select Order to Delete</label>
+        <select id="deleteId" formControlName="id">
+          <option value="" disabled>Select an order</option>
+          <option *ngFor="let o of orders" [value]="o.id">
+            {{ o.orderName }} (Qty: {{ o.quantity }}, Price: {{ o.price }})
+          </option>
+        </select>
       </div>
 
       <button type="submit" [disabled]="!isDeleteValid()" class="btn btn-danger">
@@ -79,11 +93,5 @@
 
   <hr>
 
-  <!-- Orders List -->
-  <h3>Current Orders</h3>
-  <ul>
-    <li *ngFor="let o of orders">
-      <strong>{{ o.orderName }}</strong> (Qty: {{ o.quantity }}, Price: {{ o.price }}, ID: {{ o.id }})
-    </li>
-  </ul>
+  
 </div>
