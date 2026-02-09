@@ -4,15 +4,12 @@
 
   <span class="spacer"></span>
   <nav class="nav-links">
-    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
     <a mat-button routerLink="/address" routerLinkActive="active">Address</a>
+    <a mat-button routerLink="/todolist" routerLinkActive="active">To Do List</a>
 
-    <a
-      *ngIf="!authService.isLogin()"
-      mat-button
-      routerLink="/login"
-      routerLinkActive="active"
-    >
+
+    <a *ngIf="!authService.isLogin()" mat-button routerLink="/login" routerLinkActive="active">
       Login
     </a>
 

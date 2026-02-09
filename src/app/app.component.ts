@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from "./api.service";
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: "app-root",
@@ -10,13 +11,20 @@ export class AppComponent implements OnInit {
   apiData: any;
   title = "ojt-training";
   isSidebarClosed = true;
-  onSidebarChange(state: boolean) {
-    this.isSidebarClosed = state;
-  }
-  constructor(private apiService: ApiService) {}
+  showSidebar = false;
+
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-    // this.fetchData();
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.showSidebar = event.url !== '/login';
+      }
+    });
+  }
+
+  onSidebarChange(state: boolean) {
+    this.isSidebarClosed = state;
   }
 
   fetchData(): void {
@@ -32,5 +40,8 @@ export class AppComponent implements OnInit {
         console.log("API call completed");
       }
     });
+
+
+
   }
 }

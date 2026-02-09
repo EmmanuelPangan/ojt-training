@@ -1,8 +1,8 @@
 <app-header [title]="'Welcome to My Activity'"> </app-header>
 
-<div style="display: flex; ">
-  <app-sidebar (sidebarState)="onSidebarChange($event)"></app-sidebar>
-  <div class="content" [class.expanded]="!isClosed">
+<div style="display: flex; " class="layout">
+  <app-sidebar (sidebarState)="onSidebarChange($event)" *ngIf="showSidebar"></app-sidebar>
+  <div class="content">
     <router-outlet></router-outlet>
   </div>
 </div>

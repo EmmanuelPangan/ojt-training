@@ -8,6 +8,7 @@ import { ListcomponentComponent } from "./listcomponent/listcomponent.component"
 import { DetailComponent } from "./detail/detail.component";
 import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
 import { AddressComponent } from "./address/address.component";
+import { TodolistComponent } from './todolist/todolist.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -32,6 +33,11 @@ const routes: Routes = [
     component: DetailComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: "todolist",
+    component: TodolistComponent,
+    canActivate: [AuthGuard]
+  },
   { path: "detail/:id", component: DetailComponent },
   { path: "address", component: AddressComponent, canActivate: [AuthGuard] },
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -42,4 +48,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

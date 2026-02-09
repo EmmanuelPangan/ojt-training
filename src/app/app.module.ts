@@ -27,6 +27,7 @@ import { AddressComponent } from "./address/address.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
+import { TodolistComponent } from './todolist/todolist.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatInputModule } from "@angular/material/input";
     DetailComponent,
     LoginComponent,
     PagenotfoundComponent,
-    AddressComponent
+    AddressComponent,
+    TodolistComponent
   ],
 
   imports: [
