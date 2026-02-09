@@ -4,6 +4,10 @@
   <input [(ngModel)]="username" placeholder="Username" />
   <input [(ngModel)]="password" type="password" placeholder="Password" />
   <br />
+  <p>
+    Don't have an account?
+    <button type="button" (click)="goToRegister()">Register</button>
+  </p>
 
   <button (click)="login()">
     Login

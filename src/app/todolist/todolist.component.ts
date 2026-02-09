@@ -20,6 +20,7 @@ export class TodolistComponent implements OnInit {
       this.todos.push({ text: this.newTask, completed: false });
       this.newTask = '';
       this.saveTodos();
+      alert(`Added successfully!\n`);
     }
   }
 
@@ -42,6 +43,7 @@ export class TodolistComponent implements OnInit {
       this.todos[this.editIndex].text = this.editTaskText;
       this.cancelEdit();
       this.saveTodos();
+
     }
   }
 
@@ -67,6 +69,7 @@ export class TodolistComponent implements OnInit {
   }
   saveTodos() {
     localStorage.setItem('todos', JSON.stringify(this.todos));
+
   }
   loadTodos() {
     const data = localStorage.getItem('todos');

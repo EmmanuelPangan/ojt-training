@@ -28,6 +28,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
 import { TodolistComponent } from './todolist/todolist.component';
+import { RegisterComponent } from './register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { TodolistComponent } from './todolist/todolist.component';
     LoginComponent,
     PagenotfoundComponent,
     AddressComponent,
-    TodolistComponent
+    TodolistComponent,
+    RegisterComponent
   ],
 
   imports: [
@@ -61,9 +64,10 @@ import { TodolistComponent } from './todolist/todolist.component';
     HttpClientModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

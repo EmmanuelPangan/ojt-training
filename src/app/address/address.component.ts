@@ -12,7 +12,7 @@ export class AddressComponent implements OnInit {
   province;
   townsCities;
   barangays;
-  constructor(private apiUrl: ApiService) {}
+  constructor(private apiUrl: ApiService) { }
 
   ngOnInit() {
     this.getProvince();
@@ -54,5 +54,14 @@ export class AddressComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  savedAddress() {
+    if (this.selectedProvince && this.selectedTownCity && this.selectedBarangays) {
+      alert(`Address saved successfully!\n`);
+    }
+    else {
+      alert("Please select Province, Town/City, and Barangay before saving.");
+    }
   }
 }

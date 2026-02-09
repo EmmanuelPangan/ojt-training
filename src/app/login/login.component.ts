@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +14,8 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+
   ) { }
   login() {
     console.log('Login button clicked');
@@ -29,5 +29,9 @@ export class LoginComponent {
       this.error = 'Invalid username or password';
     }
   }
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
+
 
 }
