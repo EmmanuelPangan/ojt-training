@@ -10,8 +10,8 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit {
   apiData: any;
   title = "ojt-training";
-  isSidebarClosed = true;
-  showSidebar = false;
+  isSidebarClosed = false;
+  showSidebar = true;
 
   constructor(private apiService: ApiService, private router: Router) { }
 

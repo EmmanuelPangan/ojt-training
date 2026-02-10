@@ -40,14 +40,9 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
-  {
-    path: "register",
-    component: RegisterComponent,
-    canActivate: [AuthGuard]
-  },
-
   { path: "detail/:id", component: DetailComponent },
   { path: "address", component: AddressComponent, canActivate: [AuthGuard] },
+  { path: "register", component: RegisterComponent },
   { path: "", redirectTo: "login", pathMatch: "full" },
   { path: "**", component: PagenotfoundComponent }
 ];

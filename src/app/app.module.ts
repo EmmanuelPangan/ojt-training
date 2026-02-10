@@ -7,8 +7,6 @@ import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { SidebarComponent } from "./layout/sidebar/sidebar.component";
 import { HomeComponent } from "./pages/home/home.component";
-import { AboutComponent } from "./pages/about/about.component";
-import { ContactComponent } from "./pages/contact/contact.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -39,8 +37,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     SidebarComponent,
     HomeComponent,
-    AboutComponent,
-    ContactComponent,
     ExcerciseComponent,
     ListcomponentComponent,
     DetailComponent,

@@ -1,17 +1,19 @@
-<div class="Container">
-  <h2>Login</h2>
+<div class="login-wrapper">
+  <div class="Container">
+    <h2>Login</h2>
 
-  <input [(ngModel)]="username" placeholder="Username" />
-  <input [(ngModel)]="password" type="password" placeholder="Password" />
-  <br />
-  <p>
-    Don't have an account?
-    <button type="button" (click)="goToRegister()">Register</button>
-  </p>
+    <input [(ngModel)]="username" placeholder="Username" />
+    <input [(ngModel)]="password" type="password" placeholder="Password" />
+    <br />
+    <p>
+      Don't have an account?
+      <button routerLink="/register" routerLinkActive="Active">Register</button>
+    </p>
 
-  <button (click)="login()">
-    Login
-  </button>
+    <button (click)="login()">
+      Login
+    </button>
 
-  <p style="color:red">{{ error }}</p>
+    <p style="color:red">{{ error }}</p>
+  </div>
 </div>
