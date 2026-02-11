@@ -5,7 +5,6 @@
     <div class="form-group">
       <label for="id">Select Order to Delete</label>
       <select id="id" formControlName="id">
-        <option value="" disabled>Select an order</option>
         <option *ngFor="let o of orders" [value]="o.id">
           {{ o.orderName }} (Qty: {{ o.quantity }}, Price: {{ o.price }})
         </option>

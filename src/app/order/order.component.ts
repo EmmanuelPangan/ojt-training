@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrdersService } from '../services/orders.service';
 import { Orders } from './orders.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -10,37 +11,40 @@ import { Orders } from './orders.model';
 })
 export class OrderComponent implements OnInit {
 
-  // Current active tab: add | edit | delete
   activeTab: 'add' | 'edit' | 'delete' = 'add';
 
-  // Reactive Forms
+
   addForm!: FormGroup;
   editForm!: FormGroup;
   deleteForm!: FormGroup;
 
   orders: Orders[] = [];
 
-  constructor(private fb: FormBuilder, private orderService: OrdersService) { }
+  constructor(private fb: FormBuilder, private orderService: OrdersService, private router: Router
+    , private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.initForms();
+  this.initForms();
 
-    // Load initial orders
-    this.orders = this.orderService.getOrders();
+  this.orders = this.orderService.getOrders();
+  this.orderService.orders$.subscribe(orders => this.orders = orders);
 
-    // Subscribe to BehaviorSubject for live updates
-    this.orderService.orders$.subscribe(orders => this.orders = orders);
-
-    // Auto-fill Edit form when ID changes
-    const idControl = this.editForm.get('id');
-    if (idControl) {
-      idControl.valueChanges.subscribe((id: any) => {
-        this.populateEditForm(Number(id));
-      });
+  this.route.queryParams.subscribe(params => {
+    const tab = params['tab'];
+    if (tab === 'add' || tab === 'edit' || tab === 'delete') {
+      this.activeTab = tab;
     }
-  }
+  });
 
-  // Initialize forms
+  const idControl = this.editForm.get('id');
+  if (idControl) {
+    idControl.valueChanges.subscribe(id => {
+      this.populateEditForm(Number(id));
+    });
+  }
+}
+
   initForms() {
     this.addForm = this.fb.group({
       orderName: ['', Validators.required],
@@ -60,12 +64,13 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  // Switch tabs
   switchTab(tab: 'add' | 'edit' | 'delete') {
-    this.activeTab = tab;
+  this.activeTab = tab;
+  this.router.navigate(['/orders'], {
+    queryParams: { tab }
+  });
   }
 
-  // --- Add ---
   onAdd() {
     const newOrder: Orders = {
       id: Date.now(),
@@ -76,7 +81,6 @@ export class OrderComponent implements OnInit {
     alert('Order Added!');
   }
 
-  // --- Edit ---
   onEdit() {
     const updatedOrder: Orders = this.editForm.value;
     const existingOrder = this.orderService.getOrderById(updatedOrder.id);
@@ -91,7 +95,6 @@ export class OrderComponent implements OnInit {
     alert('Order Updated!');
   }
 
-  // Auto-fill Edit form
   populateEditForm(id: number) {
     const order = this.orderService.getOrderById(id);
     if (order) {
@@ -109,13 +112,11 @@ export class OrderComponent implements OnInit {
     }
   }
 
-  // Check if Edit form ID is valid
   isEditValid(): boolean {
     const id = this.editForm.value.id;
     return !!this.orderService.getOrderById(id);
   }
 
-  // --- Delete ---
 onDelete() {
   const id = Number(this.deleteForm.value.id); // Convert to number
   const existingOrder = this.orderService.getOrderById(id);

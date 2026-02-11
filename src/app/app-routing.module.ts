@@ -23,11 +23,6 @@ const routes: Routes = [
   { path: 'details', component: DetailsComponent, canActivate: [AuthGuard] },
   { path: 'place', component: PlaceComponent, canActivate: [AuthGuard] },
   { path: 'orders', component: OrderComponent, canActivate: [AuthGuard],
-      children: [
-                  {path: 'add', component: AddTaskComponent},
-                  {path: 'edit', component: EditTaskComponent},
-                  {path: 'delete', component: DeleteTaskComponent}
-                ]
    },
 
   { path: 'login', component: LoginComponent, canActivate: [GuestGuard] },

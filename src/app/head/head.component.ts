@@ -46,4 +46,10 @@ export class HeadComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToOrders(tab: 'add' | 'edit' | 'delete') {
+  this.router.navigate(['/orders'], {
+    queryParams: { tab }
+  });
+}
+
 }

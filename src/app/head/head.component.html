@@ -12,17 +12,9 @@
     <div class="link" routerLink="/place">Place</div>
     <div class="link" routerLink="/details">Details</div>
 
-    <!-- 🔽 Mini Project Dropdown -->
-    <div class="dropdown">
-      <div class="link">
-        Mini Project
-      </div>
-
-      <div class="dropdown-menu">
-        <div class="dropdown-item" routerLink="/orders/add">Add Order</div>
-        <div class="dropdown-item" routerLink="/orders/edit">Edit Order</div>
-        <div class="dropdown-item" routerLink="/orders/delete">Delete Order</div>
-      </div>
+    <!-- ✅ Mini Project as a normal clickable link -->
+    <div class="link" (click)="goToOrders('add')">
+      Mini Project
     </div>
 
     <div>|</div>
