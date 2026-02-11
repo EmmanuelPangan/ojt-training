@@ -6,7 +6,7 @@
       <label for="id">Select Order to Delete</label>
       <select id="id" formControlName="id">
         <option *ngFor="let o of orders" [value]="o.id">
-          {{ o.orderName }} (Qty: {{ o.quantity }}, Price: {{ o.price }})
+          {{ o.orderName }} (Qty: {{ o.quantity }}, Price: {{ o.price | currency:'USD' }})
         </option>
       </select>
     </div>

@@ -8,12 +8,15 @@ import { ShareDataService } from '../share-data.service';
 export class HeaderComponent implements OnInit {
 
   Welcome = "Welcome To My Page";
+    InterSentence = "This is Interpolation, I hope you like it!!";
 
   isButtonDisabled : boolean = true;
 
   isLoggedIn = true;
 
   data = '';
+
+
 
   constructor( private sharedData: ShareDataService)
   {

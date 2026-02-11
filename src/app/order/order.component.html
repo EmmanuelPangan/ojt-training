@@ -9,15 +9,30 @@
   </div>
 
   <hr>
-  <!-- Current Orders List -->
-  <h3>Current Orders</h3>
-  <ul class="orders-list">
-    <li *ngFor="let o of orders"
-        [class.selected]="deleteForm.value.id === o.id"
-        (click)="selectOrderForDelete(o.id)">
-      <strong>{{ o.orderName }}</strong> (Qty: {{ o.quantity }}, Price: {{ o.price }}, ID: {{ o.id }})
-    </li>
-  </ul>
+<!-- Current Orders List -->
+<h3>Current Orders</h3>
+
+<table class="orders-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Order Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let o of orders"
+      (click)="activeTab === 'edit' ? selectOrderForEdit(o) : selectOrderForDelete(o.id)"
+      [class.selected]="(activeTab === 'delete' ? deleteForm.value.id : editForm.value.id) === o.id">
+    <td>{{ o.id }}</td>
+    <td><strong>{{ o.orderName }}</strong></td>
+    <td>{{ o.quantity }}</td>
+    <td>{{ o.price | currency : 'USD'}}</td>
+  </tr>
+</tbody>
+</table>
 
   <!-- Add Tab -->
   <div *ngIf="activeTab === 'add'" class="tab-content">

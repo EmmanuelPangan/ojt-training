@@ -72,10 +72,18 @@ export class OrderComponent implements OnInit {
   }
 
   onAdd() {
+    const orders = this.orderService.getOrders();
+
+    const nextId =
+      orders.length > 0
+        ? Math.max(...orders.map(o => o.id)) + 1
+        : 1;
+
     const newOrder: Orders = {
-      id: Date.now(),
+      id: nextId,
       ...this.addForm.value
     };
+
     this.orderService.addOrder(newOrder);
     this.addForm.reset();
     alert('Order Added!');
@@ -142,5 +150,17 @@ isDeleteValid(): boolean {
 // When clicking on the list item, select it in the dropdown
 selectOrderForDelete(id: number) {
   this.deleteForm.patchValue({ id }); // Keep as number; conversion handled in onDelete
+}
+
+selectOrderForEdit(order: any) {
+  // Make sure the edit form exists
+  if (this.editForm) {
+    this.editForm.patchValue({
+      id: order.id,
+      orderName: order.orderName,
+      quantity: order.quantity,
+      price: order.price
+    });
+  }
 }
 }
