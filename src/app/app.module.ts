@@ -23,6 +23,8 @@ import { AddTaskComponent } from './order/add-task/add-task.component';
 import { EditTaskComponent } from './order/edit-task/edit-task.component';
 import { FormsModule } from '@angular/forms';
 import { DeleteTaskComponent } from './order/delete-task/delete-task.component';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,14 @@ import { DeleteTaskComponent } from './order/delete-task/delete-task.component';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      closeButton: true
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

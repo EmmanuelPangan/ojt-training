@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrdersService } from '../services/orders.service';
 import { Orders } from './orders.model';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { ToastrService, ActiveToast} from 'ngx-toastr';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -20,8 +20,10 @@ export class OrderComponent implements OnInit {
 
   orders: Orders[] = [];
 
+  private currentDeleteToast: ActiveToast<any> | null = null;
+
   constructor(private fb: FormBuilder, private orderService: OrdersService, private router: Router
-    , private route: ActivatedRoute
+    , private route: ActivatedRoute, private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -86,7 +88,7 @@ export class OrderComponent implements OnInit {
 
     this.orderService.addOrder(newOrder);
     this.addForm.reset();
-    alert('Order Added!');
+    this.toastr.success('Order Added!');
   }
 
   onEdit() {
@@ -94,13 +96,13 @@ export class OrderComponent implements OnInit {
     const existingOrder = this.orderService.getOrderById(updatedOrder.id);
 
     if (!existingOrder) {
-      alert('Order ID not found!');
+      this.toastr.error('Order ID not found!');
       return;
     }
 
     this.orderService.updateOrder(updatedOrder);
     this.editForm.reset();
-    alert('Order Updated!');
+    this.toastr.success('Order Updated!');
   }
 
   populateEditForm(id: number) {
@@ -130,30 +132,29 @@ onDelete() {
   const existingOrder = this.orderService.getOrderById(id);
 
   if (!existingOrder) {
-    alert('Order ID not found!');
+    this.toastr.error('Order ID not found!');
     return;
   }
 
   if (confirm(`Are you sure you want to delete "${existingOrder.orderName}"?`)) {
     this.orderService.deleteOrder(id); // Call service to delete
     this.deleteForm.reset();           // Reset dropdown
-    alert('Order Deleted!');
+    this.toastr.success('Order Deleted!');
   }
 }
 
-// Check if a valid order is selected
+
 isDeleteValid(): boolean {
-  const id = Number(this.deleteForm.value.id); // Convert to number
+  const id = Number(this.deleteForm.value.id); 
   return !!this.orderService.getOrderById(id);
 }
 
-// When clicking on the list item, select it in the dropdown
+
 selectOrderForDelete(id: number) {
-  this.deleteForm.patchValue({ id }); // Keep as number; conversion handled in onDelete
+  this.deleteForm.patchValue({ id }); 
 }
 
 selectOrderForEdit(order: any) {
-  // Make sure the edit form exists
   if (this.editForm) {
     this.editForm.patchValue({
       id: order.id,
@@ -163,4 +164,6 @@ selectOrderForEdit(order: any) {
     });
   }
 }
+
+
 }
