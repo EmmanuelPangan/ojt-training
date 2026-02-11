@@ -1,0 +1,63 @@
+.detail {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 30px 35px;
+    background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+    text-align: center;
+    font-family: 'Monospace', 'Lucida Console';
+    animation: fadeIn 0.4s ease;
+  }
+  
+  .detail h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #ff69b4;
+    font-weight: bold;
+  }
+  
+  .detail p {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.6;
+  }
+  .detail a {
+    display: inline-block;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #ff69b4, #ff85c1);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .detail a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(255, 105, 180, 0.45);
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+  @media (max-width: 600px) {
+    .detail {
+      margin: 30px 15px;
+      padding: 22px;
+    }
+  
+    .detail h2 {
+      font-size: 22px;
+    }
+  }

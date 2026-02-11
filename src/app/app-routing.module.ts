@@ -39,7 +39,7 @@ const routes: Routes = [
     component: TodolistComponent,
     canActivate: [AuthGuard]
   },
-
+  { path: '', component: ListcomponentComponent },
   { path: "detail/:id", component: DetailComponent },
   { path: "address", component: AddressComponent, canActivate: [AuthGuard] },
   { path: "register", component: RegisterComponent },

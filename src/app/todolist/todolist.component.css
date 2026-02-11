@@ -1,77 +1,186 @@
 .todo-container {
-    width: 350px;
-    margin: 40px auto;
-    padding: 20px;
-    border-radius: 10px;
-    background: #f9f9f9;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 25px;
+  background: linear-gradient(135deg, #ffe4e1, #ffcce6);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+  font-family: 'Monospace', 'Lucida Console';
+  color: black;
+}
+
+
+.todo-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff1493;
+  font-size: 24px;
+}
+
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 2px solid #ffb6c1;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #ff69b4; 
+  box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+}
+
+.input-group button {
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.input-group button:hover {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters button {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 2px solid #ffb6c1;
+  background: #fff0f5;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filters button.active {
+  background: #ff69b4;
+  color: #fff;
+  border-color: #ff69b4;
+}
+
+.filters button:hover {
+  background: #ffb6c1;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background: #fff0f5; 
+  box-shadow: 0 4px 8px rgba(255, 105, 180, 0.1);
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  box-shadow: 0 6px 12px rgba(255, 105, 180, 0.2);
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #ff69b4;
+}
+
+li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+li button:hover {
+  transform: scale(1.2);
+}
+
+li .delete {
+  color: #ff1493;
+}
+
+.edit-box {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-box input {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: 2px solid #ffb6c1;
+  outline: none;
+}
+
+.edit-box button {
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+}
+
+.edit-box button:first-child {
+  background: #ff69b4; 
+}
+
+.edit-box button:last-child {
+  background: #ff1493;
+}
+
+
+@media (max-width: 480px) {
+  .todo-container {
+    padding: 20px 15px;
   }
-  
-  h2 {
-    text-align: center;
-  }
-  
+
   .input-group {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 15px;
+    flex-direction: column;
   }
-  
-  input[type='text'] {
-    flex: 1;
-    padding: 8px;
+
+  .input-group button {
+    width: 100%;
   }
-  
-  button {
-    padding: 8px 12px;
-    cursor: pointer;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
+
   li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 0;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .completed {
-    text-decoration: line-through;
-    color: gray;
-  }
-  
-  .delete {
-    margin-left: auto;
-    background: transparent;
-    border: none;
-    color: red;
-    font-size: 16px;
-  }
+
   .edit-box {
-    display: flex;
-    gap: 5px;
+    flex-direction: column;
   }
-  
-  .edit-box input {
-    padding: 4px;
+
+  .edit-box button {
+    width: 100%;
   }
-  .filters {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .filters button {
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .filters .active {
-    background-color: #1976d2;
-    color: white;
-  }
+}

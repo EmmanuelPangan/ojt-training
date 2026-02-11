@@ -1,25 +1,90 @@
+/* ===== Form Container ===== */
 .address-form {
   max-width: 500px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
+  margin: 30px auto;
+  padding: 25px;
+  background: linear-gradient(135deg, #ffe4e1, #ffcce6);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+  font-family: 'Monospace', 'Lucida Console';
+  color: black;
 }
 
-.address-form label {
-  display: block;
-  margin-top: 10px;
+/* ===== Sections ===== */
+.form-section {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.address-form input {
-  width: 95%;
-  padding: 8px;
+/* ===== Section Headings ===== */
+.form-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ff69b4; /* hot pink */
+  text-align: center;
+}
+
+/* ===== Angular Material Labels ===== */
+.mat-form-field .mat-label {
+  color: #ff1493 !important; /* deep pink */
+  font-weight: 600;
+}
+
+/* ===== Angular Material Select Fields ===== */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-color: #ffb6c1; /* light pink outline */
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  border-color: #ff69b4 !important;
+}
+
+.mat-select {
+  background: #fff0f5; /* lavender blush for field */
+  border-radius: 15px;
+}
+
+.mat-select-value {
+  color: #000;
+  font-weight: 500;
+}
+
+/* ===== Paragraphs showing selected value ===== */
+.form-section p {
   margin-top: 5px;
+  font-size: 14px;
+  color: #ff1493; /* deep pink */
 }
 
-.address-form button {
-  margin-top: 15px;
-  width: 100%;
-  padding: 10px;
+/* ===== Submit Button ===== */
+button[type="submit"] {
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .address-form {
+    padding: 20px 15px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
 }

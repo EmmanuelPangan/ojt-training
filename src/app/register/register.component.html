@@ -1,0 +1,20 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <p>Username</p>
+    <input formControlName="username" placeholder="Username">
+    <p>Email</p>
+    <input formControlName="email" placeholder="Email">
+    <p>Password</p>
+    <input formControlName="password" type="password" placeholder="Password">
+    <p>Confirm Password</p>
+    <input formControlName="confirmPassword" type="password" placeholder="Confirm Password">
+
+    <div *ngIf="registerForm.get('confirmPassword') && registerForm.get('confirmPassword').errors?.mismatch">
+        Passwords do not match
+    </div>
+    <br>
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    <div *ngIf="showBox" class="message-box">
+        <p>Registration successful!</p>
+        <button (click)="closeBox()">Close</button>
+    </div>
+</form>

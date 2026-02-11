@@ -7,6 +7,7 @@
   box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
   font-family: 'Monospace', 'Lucida Console'; 
   color:black;
+  flex-wrap: wrap;
 }
 .spacer {
   flex: 1 1 auto;
@@ -20,14 +21,15 @@
 .nav {
   display: flex;
   gap: 10px;
-  width: 100%;
   justify-content: flex-end;
   margin-top: 10px;
+  flex-wrap: wrap;
+  margin-top: 0;
 }
 .nav a {
     color:black !important;
     text-decoration: none;
-    font-size: 14-15px;
+    font-size: 14px;
     font-weight: 600;
     padding: 8px 14px;
     border-radius: 20px;
@@ -36,7 +38,7 @@
 .nav-item {
     color: black;
     text-decoration: none;
-    font-size: 14-15px;
+    font-size: 14px;
     font-weight: 600;
     padding: 8px 14px;
     border-radius: 20px;
@@ -46,11 +48,12 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  flex-wrap: wrap;
 }
 .nav-links a {
   color:black !important;
   text-decoration: none;
-  font-size: 14-15px;
+  font-size: 14px;
   font-weight: 600;
   padding: 8px 14px;
   border-radius: 20px;
@@ -59,10 +62,14 @@
 .toolbar {
   display: flex;
 }
+.nav-links a:hover {
+  background: #ffb6c1;
+  color: #fff;
+}
 a[mat-button] {
   color:black !important;
   text-decoration: none;
-  font-size: 14-15px;
+  font-size: 14px;
   font-weight: 600;
   padding: 8px 14px;
   border-radius: 20px;
@@ -70,8 +77,33 @@ a[mat-button] {
 }
 
 @media (max-width: 768px) {
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
+  .head {
+    flex-direction: column; 
+    align-items: center;
+    padding: 10px 15px;
+
   }
+
+  .nav-links {
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    flex-direction: row;
+    align-items: center;
+    width: 100%; 
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    padding: 6px 10px;
+    width: 90%;   
+    text-align: center;
+  }
+  .head h1 {
+    text-align: center;
+  }
+  .spacer{
+    display: none;
+  }
+
 }

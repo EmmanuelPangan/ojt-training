@@ -1,4 +1,5 @@
-<div *ngFor='let item of items '>
-    <h2>{{ item?.name }}</h2>
-    <p>{{ item?.description }}</p>
-</div><a routerLink="/">⬅ Back to list</a>
+<div *ngIf="selectedItem" class="detail">
+    <h2>{{ selectedItem.name }}</h2>
+    <p>{{ selectedItem.description }}</p>
+    <a routerLink="/">Back to list</a>
+</div>

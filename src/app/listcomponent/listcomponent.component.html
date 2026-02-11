@@ -2,6 +2,8 @@
 
 <ul>
     <li *ngFor="let item of items" class="list-item">
-        <a [routerLink]="['/detail', item.id]">{{ item.name }}</a>
+        <a [routerLink]="['/detail', item.id]">
+            {{ item.name }}
+        </a>
     </li>
 </ul>

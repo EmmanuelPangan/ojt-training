@@ -1,4 +1,4 @@
-// header.component.ts
+
 import { Component, Input } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { SidebarService } from '../sidebar.service';

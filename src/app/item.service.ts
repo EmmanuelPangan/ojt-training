@@ -24,4 +24,5 @@ export class ItemService {
   getItemById(id: number) {
     return this.items.find(item => item.id === id);
   }
+
 }
