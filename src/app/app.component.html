@@ -23,7 +23,7 @@
         <app-alert-message></app-alert-message>
         <router-outlet></router-outlet>
       </div>
-      <app-foot></app-foot>
+      <app-foot *ngIf="authService.isLoggedIn()"></app-foot>
     </div>
   </div>
 
