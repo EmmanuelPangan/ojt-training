@@ -13,6 +13,7 @@
 
       <!-- MOVE app-head here -->
       <app-head
+        *ngIf="authService.isLoggedIn()"
         (logoClick)="toggleSidebar()">
       </app-head>
 
