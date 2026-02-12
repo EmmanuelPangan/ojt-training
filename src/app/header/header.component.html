@@ -7,8 +7,6 @@
     <button mat-icon button routerLink="/home">
       <mat-icon>home</mat-icon>
     </button>
-    <a mat-button routerLink="/address" routerLinkActive="active">Address</a>
-    <a mat-button routerLink="/todolist" routerLinkActive="active">To Do List</a>
 
 
     <a *ngIf="!authService.isLogin()" mat-button routerLink="/login" routerLinkActive="active">

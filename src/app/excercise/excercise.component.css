@@ -8,7 +8,6 @@
     font-family: 'Monospace', 'Lucida Console';
   }
   
-  /* Title */
   .prac h1 {
     text-align: center;
     color: #ff69b4;
@@ -16,7 +15,6 @@
     font-size: 32px;
   }
   
-  /* Section headers */
   .prac h5 {
     margin-top: 22px;
     margin-bottom: 8px;
@@ -24,7 +22,6 @@
     font-weight: 700;
   }
   
-  /* Inputs */
   .prac input {
     width: 100%;
     padding: 10px 14px;
@@ -40,7 +37,6 @@
     cursor: not-allowed;
   }
   
-  /* Buttons */
   .prac button {
     padding: 8px 20px;
     border: none;
@@ -57,13 +53,11 @@
     box-shadow: 0 8px 16px rgba(255, 105, 180, 0.4);
   }
   
-  /* Paragraph text */
   .prac p {
     color: #444;
     margin-top: 8px;
   }
   
-  /* ngIf welcome */
   .prac div[ng-reflect-ng-if],
   .prac div *ngIf {
     margin-top: 10px;
@@ -78,7 +72,6 @@
     width: fit-content;
   }
   
-  /* ngFor list */
   .prac div *ngFor,
   .prac div {
     margin-bottom: 6px;
@@ -88,13 +81,11 @@
     color: #555;
   }
   
-  /* Pipes output */
   .prac p:last-child {
     font-weight: 600;
     color: #ff69b4;
   }
-  
-  /* 📱 Responsive */
+
   @media (max-width: 600px) {
     .prac {
       margin: 20px;

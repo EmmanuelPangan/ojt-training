@@ -1,112 +1,121 @@
 .head {
   display: flex; 
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 0 15px;
   background: linear-gradient(135deg, #ffe4e1, #ffcce6);
   box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
   font-family: 'Monospace', 'Lucida Console'; 
-  color: black;
+  color:black;
   flex-wrap: wrap;
-  gap:10px;
 }
-
 .spacer {
   flex: 1 1 auto;
   display: none;
 }
 
-.title {
-  font-weight: bold;
-  flex: 1 1 0;               /* allow title to grow and center */
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: clamp(1.3rem, 6vw, 2.5rem);
-  margin: 0;
-  min-width: 0;
-  font-weight: bold;
+.head h1 {
+  font-size: 30px;
+  margin: 0px;
+  color:black;
 }
-
+.nav {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  margin-top: 0;
+}
+.nav a {
+    color:black !important;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+.nav-item {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
 .nav-links {
   display: flex;
   gap: 10px;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center; 
-  margin-top: 0;
+  margin-top: 10px;
 }
-
-.nav-links a,
-.nav-links button {
-  font-size: 14px;
-  padding: 8px 14px;
-  width: auto;           /* prevent full width */
+.nav-links a {
+  font-size: 13px;
+  padding: 6px 10px;
+  width: auto;               
   text-align: center;
   box-sizing: border-box; 
+}
+.toolbar {
+  display: flex;
+}
+.nav-links a:hover {
+  background: #ffb6c1;
+  color: #fff;
+}
+a[mat-button] {
+  color:black !important;
   text-decoration: none;
-  color: black;
+  font-size: 14px;
   font-weight: 600;
+  padding: 8px 14px;
   border-radius: 20px;
   transition: all 0.3s ease;
 }
-
-.nav-links a:hover,
-.nav-links button:hover {
-  background: #ffb6c1;
-  color: white;
-}
-/* Base title styles */
-.title {
-  font-weight: bold;
-  text-align: center;
-  white-space: nowrap;      /* keep on one line */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: clamp(1.5rem, 6vw, 2.5rem); /* responsive font size */
-  flex: 1 1 auto;           /* allow it to grow/shrink */
-  margin: 0;
-  min-width: 0;             /* IMPORTANT: allows flex-shrink to work */
-}
+.head .title {
+  margin-bottom: 15px;}
 
 
-/* Responsive for mobile */
+
 @media (max-width: 768px) {
   .head {
-    flex-direction: column; /* stack title and nav vertically */
+    flex-direction: column; 
     align-items: center;
     padding: 10px 15px;
+    gap: 10px;
   }
-
-  .title {
-    font-size: clamp(1.2rem, 8vw, 2rem); 
-    margin-bottom: 10px;   /* space between title and nav */
+  .head .title {
+    margin-bottom: 10px; 
   }
 
   .nav-links {
-    flex-direction: row;     /* keep links horizontal */
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
     gap: 8px;
-    width: auto;             /* allow horizontal layout */
-    flex-wrap: wrap;         /* wrap if too many links */
-    margin-top: 0;
+    width: auto; 
+    margin-top: 10px;
+    flex-wrap: wrap; 
+    
   }
 
-  .nav-links a,
-  .nav-links button {
+  .nav-links a {
     font-size: 13px;
     padding: 6px 10px;
-    width: auto;             /* important: don’t force full width */
+    width: auto;  
+    text-align: center;
+    box-sizing: border-box; 
   }
 
-    .head {
-      flex-direction: column;  /* stack title and nav vertically */
-    }
-  
-    .title {
-      font-size: clamp(1.3rem, 8vw, 2rem); /* slightly smaller on mobile */
-      margin-bottom: 10px;                 /* spacing from nav */
-    }
-  
+  .head h1 {
+    text-align: center;
+  }
+
+  .spacer {
+    display: none;
+  }
 }

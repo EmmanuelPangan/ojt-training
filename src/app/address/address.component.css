@@ -1,4 +1,3 @@
-/* ===== Form Container ===== */
 .address-form {
   max-width: 500px;
   margin: 30px auto;
@@ -10,30 +9,29 @@
   color: black;
 }
 
-/* ===== Sections ===== */
+
 .form-section {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
 }
 
-/* ===== Section Headings ===== */
+
 .form-section h2 {
   font-size: 20px;
   margin-bottom: 10px;
-  color: #ff69b4; /* hot pink */
+  color: #ff69b4; 
   text-align: center;
 }
 
-/* ===== Angular Material Labels ===== */
 .mat-form-field .mat-label {
-  color: #ff1493 !important; /* deep pink */
+  color: #ff1493 !important;
   font-weight: 600;
 }
 
-/* ===== Angular Material Select Fields ===== */
+
 .mat-form-field-appearance-outline .mat-form-field-outline {
-  border-color: #ffb6c1; /* light pink outline */
+  border-color: #ffb6c1;
 }
 
 .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
@@ -41,7 +39,7 @@
 }
 
 .mat-select {
-  background: #fff0f5; /* lavender blush for field */
+  background: #fff0f5;
   border-radius: 15px;
 }
 
@@ -50,14 +48,14 @@
   font-weight: 500;
 }
 
-/* ===== Paragraphs showing selected value ===== */
+
 .form-section p {
   margin-top: 5px;
   font-size: 14px;
-  color: #ff1493; /* deep pink */
+  color: #ff1493;
 }
 
-/* ===== Submit Button ===== */
+
 button[type="submit"] {
   background: linear-gradient(135deg, #ffb6c1, #ff69b4);
   color: #fff;
@@ -78,7 +76,7 @@ button[type="submit"]:hover {
   box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
 }
 
-/* ===== Responsive ===== */
+
 @media (max-width: 480px) {
   .address-form {
     padding: 20px 15px;

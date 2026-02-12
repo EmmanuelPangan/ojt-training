@@ -57,6 +57,7 @@ export class AddressComponent implements OnInit {
   }
 
   savedAddress() {
+
     if (this.selectedProvince && this.selectedTownCity && this.selectedBarangays) {
       alert(`Address saved successfully!\n`);
     }
