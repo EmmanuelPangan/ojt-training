@@ -1,36 +1,40 @@
 <div id="container" class="col-sm">
-  <button
-    mat-mini-fab
-    color="accent"
-    id="logo"
-    class="point"
-    (click)="onLogoClick($event)">
-    <mat-icon>menu</mat-icon>
-</button>
+  <div class="left-group">
+    <button
+      mat-mini-fab
+      color="accent"
+      id="logo"
+      class="point nav-icon"
+      (click)="onLogoClick($event)"
+      aria-label="Toggle sidebar">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
 
   <div id="links">
-    <button mat-mini-fab routerLink="/home" aria-label="Home">
+    <button mat-mini-fab routerLink="/home" aria-label="Home" class="nav-icon nav-btn">
       <mat-icon>home</mat-icon>
     </button>
-
-   <button mat-raised-button color="accent" routerLink="/about">
-        About
+    <button mat-raised-button color="accent" routerLink="/about" routerLinkActive="active-link" class="nav-btn">
+      <mat-icon class="btn-icon">info</mat-icon>
+      <span class="btn-label">About</span>
     </button>
-    <button mat-raised-button color="accent" routerLink="/place">
-        Place
+    <button mat-raised-button color="accent" routerLink="/place" routerLinkActive="active-link" class="nav-btn">
+      <mat-icon class="btn-icon">place</mat-icon>
+      <span class="btn-label">Place</span>
     </button>
-    <button mat-raised-button color="accent" routerLink="/details">
-        Details
+    <button mat-raised-button color="accent" routerLink="/details" routerLinkActive="active-link" class="nav-btn">
+      <mat-icon class="btn-icon">description</mat-icon>
+      <span class="btn-label">Details</span>
     </button>
-
-    <!-- ✅ Mini Project as a normal clickable link -->
-    <button mat-raised-button color="accent" (click)="goToOrders('add')">
-      Mini Project
+    <button mat-raised-button color="accent" (click)="goToOrders('add')" class="nav-btn">
+      <mat-icon class="btn-icon">assignment</mat-icon>
+      <span class="btn-label">Mini Project</span>
     </button>
-
-    <div>|</div>
-    <button class="link" (click)="onAuthClick()" mat-raised-button color="accent">
-      {{ isLoggedIn ? 'Logout' : 'Login' }}
+    <span class="divider" aria-hidden="true"></span>
+    <button class="link nav-btn auth-btn" (click)="onAuthClick()" mat-raised-button color="accent">
+      <mat-icon class="btn-icon">{{ isLoggedIn ? 'logout' : 'login' }}</mat-icon>
+      <span class="btn-label">{{ isLoggedIn ? 'Logout' : 'Login' }}</span>
     </button>
   </div>
 </div>
