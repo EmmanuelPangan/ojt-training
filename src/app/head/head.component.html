@@ -1,25 +1,36 @@
 <div id="container" class="col-sm">
-  <div
+  <button
+    mat-mini-fab
+    color="accent"
     id="logo"
     class="point"
     (click)="onLogoClick($event)">
-    Logo
-  </div>
+    <mat-icon>menu</mat-icon>
+</button>
 
   <div id="links">
-    <div class="link" routerLink="/home">Home</div>
-    <div class="link" routerLink="/about">About</div>
-    <div class="link" routerLink="/place">Place</div>
-    <div class="link" routerLink="/details">Details</div>
+    <button mat-mini-fab routerLink="/home" aria-label="Home">
+      <mat-icon>home</mat-icon>
+    </button>
+
+   <button mat-raised-button color="accent" routerLink="/about">
+        About
+    </button>
+    <button mat-raised-button color="accent" routerLink="/place">
+        Place
+    </button>
+    <button mat-raised-button color="accent" routerLink="/details">
+        Details
+    </button>
 
     <!-- ✅ Mini Project as a normal clickable link -->
-    <div class="link" (click)="goToOrders('add')">
+    <button mat-raised-button color="accent" (click)="goToOrders('add')">
       Mini Project
-    </div>
+    </button>
 
     <div>|</div>
-    <div class="link" (click)="onAuthClick()">
+    <button class="link" (click)="onAuthClick()" mat-raised-button color="accent">
       {{ isLoggedIn ? 'Logout' : 'Login' }}
-    </div>
+    </button>
   </div>
 </div>

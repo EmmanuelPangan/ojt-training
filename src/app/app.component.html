@@ -2,6 +2,7 @@
 
   <div class="main-layout">
     <app-left-sidebar
+    *ngIf="authService.isLoggedIn()"
   [class.closed]="!isSidebarOpen"
   [isOpen]="isSidebarOpen"
   class="sidebar">

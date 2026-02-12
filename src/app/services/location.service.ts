@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 })
 export class LocationService {
 
+  
   private baseUrl = environment.apiBaseUrl;
   constructor(private http:HttpClient) { }
 

@@ -24,7 +24,9 @@ import { EditTaskComponent } from './order/edit-task/edit-task.component';
 import { FormsModule } from '@angular/forms';
 import { DeleteTaskComponent } from './order/delete-task/delete-task.component';
 import { ToastrModule } from 'ngx-toastr';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,10 @@ import { ToastrModule } from 'ngx-toastr';
       progressBar: true,
       closeButton: true
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

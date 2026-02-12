@@ -32,7 +32,6 @@
       <td>{{ o.quantity }}</td>
       <td>{{ o.price | currency : 'USD'}}</td>
       
-      <!-- Delete button only when delete tab is active -->
       <td *ngIf="activeTab === 'delete'">
         <button class="btn btn-sm btn-danger" (click)="selectOrderForDelete(o.id); onDelete(); $event.stopPropagation();">
           Delete
@@ -42,7 +41,7 @@
   </tbody>
 </table>
 
-  <!-- Add Tab -->
+
   <div *ngIf="activeTab === 'add'" class="tab-content">
     <form [formGroup]="addForm" (ngSubmit)="onAdd()" class="task-form">
       <div class="form-group">
@@ -66,7 +65,6 @@
     </form>
   </div>
 
-  <!-- Edit Tab -->
   <div *ngIf="activeTab === 'edit'" class="tab-content">
     <form [formGroup]="editForm" (ngSubmit)="onEdit()" class="task-form">
       <div class="form-group">
@@ -94,23 +92,11 @@
       </button>
     </form>
   </div>
-
-  <!-- Delete Tab -->
+  
   <div *ngIf="activeTab === 'delete'" class="tab-content">
     <form [formGroup]="deleteForm" (ngSubmit)="onDelete()" class="task-form">
       <div class="form-group">
-        <label for="deleteId">Select Order to Delete</label>
-        <select id="deleteId" formControlName="id">
-          <option value="" disabled>Select an order</option>
-          <option *ngFor="let o of orders" [value]="o.id">
-            {{ o.orderName }} (Qty: {{ o.quantity }}, Price: {{ o.price }})
-          </option>
-        </select>
       </div>
-
-      <button type="submit" [disabled]="!isDeleteValid()" class="btn btn-danger" (click)="onDelete(); $event.preventDefault()">
-  Delete Order
-</button>
     </form>
   </div>
 

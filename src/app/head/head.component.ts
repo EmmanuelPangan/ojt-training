@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-
+import { AlertServiceService } from '../alert/alert-service.service';
 @Component({
   selector: 'app-head',
   templateUrl: './head.component.html',
@@ -21,14 +21,9 @@ export class HeadComponent implements OnInit {
     
   }
 
-  onLogoClick (event:MouseEvent)
-  {
-    event.preventDefault();
-    event.stopPropagation();
-    this.logoClick.emit();
-  }
 
-  constructor(private auth: AuthService, private router: Router) { }
+
+  constructor(private auth: AuthService, private router: Router, private alertService: AlertServiceService) { }
 
   get isLoggedIn(): boolean {
     return this.auth.isLoggedIn();
@@ -51,5 +46,19 @@ export class HeadComponent implements OnInit {
     queryParams: { tab }
   });
 }
+
+  onLogoClick (event:MouseEvent)
+  {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (!this.auth.isLoggedIn())
+    {
+      this.alertService.error('You must be logged in to access this page.');
+      this.router.navigate(['/login']);
+      return;
+    }
+    this.logoClick.emit();
+  }
 
 }
