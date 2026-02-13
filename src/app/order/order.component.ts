@@ -20,6 +20,7 @@ export class OrderComponent implements OnInit {
 
   orders: Orders[] = [];
   completedOrderIds: number[] = [];
+  orderSearchTerm = '';
 
   private currentDeleteToast: ActiveToast<any> | null = null;
 
@@ -81,6 +82,17 @@ export class OrderComponent implements OnInit {
 
   get completedOrders(): Orders[] {
     return this.orders.filter(order => this.completedOrderIds.includes(order.id));
+  }
+
+  get filteredOrders(): Orders[] {
+    const term = this.orderSearchTerm.trim().toLowerCase();
+    if (!term) {
+      return this.orders;
+    }
+
+    return this.orders.filter(order =>
+      (order.orderName || '').toLowerCase().includes(term)
+    );
   }
 
   isCompleted(id: number): boolean {
@@ -225,4 +237,3 @@ selectOrderForEdit(order: any) {
 
 
 }
-

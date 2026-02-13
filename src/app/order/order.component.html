@@ -10,6 +10,15 @@
   </div>
 
   <hr>
+  <div class="form-group order-search" *ngIf="activeTab !== 'completed'">
+    <label for="orderSearch">Search by Order Name</label>
+    <input
+      id="orderSearch"
+      type="text"
+      [(ngModel)]="orderSearchTerm"
+      placeholder="Type order name..."
+    />
+  </div>
 <!-- Current Orders List -->
 <h3 *ngIf="activeTab !== 'completed'">Current Orders</h3>
 
@@ -26,7 +35,7 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let o of orders"
+    <tr *ngFor="let o of filteredOrders"
         (click)="activeTab === 'edit' ? selectOrderForEdit(o) : null"
         [class.selected]="(activeTab === 'delete' ? deleteForm.value.id : editForm.value.id) === o.id">
       <td class="check-col" *ngIf="activeTab === 'add'">
@@ -84,11 +93,6 @@
 
   <div *ngIf="activeTab === 'edit'" class="tab-content">
     <form [formGroup]="editForm" (ngSubmit)="onEdit()" class="task-form">
-      <div class="form-group">
-        <label for="editId">Order ID</label>
-        <input type="number" id="editId" formControlName="id" placeholder="Enter order ID">
-      </div>
-
       <div class="form-group">
         <label for="editOrderName">Order Name</label>
         <input type="text" id="editOrderName" formControlName="orderName" placeholder="Enter new order name">
