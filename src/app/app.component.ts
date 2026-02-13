@@ -37,6 +37,15 @@ export class AppComponent {
     }
   }
 
+  onMainContentClick(): void {
+    if (!this.isSidebarOpen) {
+      return;
+    }
+
+    this.isSidebarOpen = false;
+    this.hideRightButtonsOnMobile = false;
+  }
+
   private isSmallDevice(): boolean {
     return window.matchMedia('(max-width: 640px)').matches;
   }

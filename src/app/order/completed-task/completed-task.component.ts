@@ -8,6 +8,7 @@ import { Orders } from '../orders.model';
 })
 export class CompletedTaskComponent implements OnInit {
   @Input() completedOrders: Orders[] = [];
+  @Input() searchTerm = '';
   @Output() markActive = new EventEmitter<number>();
 
   constructor() { }
@@ -17,6 +18,17 @@ export class CompletedTaskComponent implements OnInit {
 
   onMarkActive(id: number): void {
     this.markActive.emit(id);
+  }
+
+  get filteredCompletedOrders(): Orders[] {
+    const term = this.searchTerm.trim().toLowerCase();
+    if (!term) {
+      return this.completedOrders;
+    }
+
+    return this.completedOrders.filter(order =>
+      (order.orderName || '').toLowerCase().includes(term)
+    );
   }
 
 }

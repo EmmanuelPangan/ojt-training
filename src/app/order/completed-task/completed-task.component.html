@@ -1,7 +1,8 @@
 <h3>Completed Order</h3>
 <p *ngIf="completedOrders.length === 0">No completed tasks yet.</p>
+<p *ngIf="completedOrders.length > 0 && filteredCompletedOrders.length === 0">No matching completed orders.</p>
 
-<table class="orders-table" *ngIf="completedOrders.length > 0">
+<table class="orders-table" *ngIf="filteredCompletedOrders.length > 0">
   <thead>
     <tr>
       <th>ID</th>
@@ -11,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let o of completedOrders">
+    <tr *ngFor="let o of filteredCompletedOrders">
       <td>{{ o.id }}</td>
       <td><strong>{{ o.orderName }}</strong></td>
       <td>{{ o.quantity }}</td>

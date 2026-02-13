@@ -9,7 +9,7 @@
   class="sidebar">
 </app-left-sidebar>
 
-    <div class="right-panel">
+    <div class="right-panel" [class.blurred]="isSidebarOpen">
       
 
       <!-- MOVE app-head here -->
@@ -21,7 +21,7 @@
 
     
 
-      <div class="content">
+      <div class="content" (click)="onMainContentClick()">
         <app-alert-message></app-alert-message>
         <router-outlet></router-outlet>
       </div>

@@ -9,8 +9,7 @@
     <button [class.active]="activeTab === 'completed'" (click)="switchTab('completed')">Completed Task</button>
   </div>
 
-  <hr>
-  <div class="form-group order-search" *ngIf="activeTab !== 'completed'">
+  <div class="form-group order-search">
     <label for="orderSearch">Search by Order Name</label>
     <input
       id="orderSearch"
@@ -19,6 +18,7 @@
       placeholder="Type order name..."
     />
   </div>
+  <hr>
 <!-- Current Orders List -->
 <h3 *ngIf="activeTab !== 'completed'">Current Orders</h3>
 
@@ -124,6 +124,7 @@
   <div *ngIf="activeTab === 'completed'" class="tab-content">
     <app-completed-task
       [completedOrders]="completedOrders"
+      [searchTerm]="orderSearchTerm"
       (markActive)="markIncomplete($event)">
     </app-completed-task>
   </div>

@@ -143,6 +143,20 @@ export class OrderComponent implements OnInit {
 
   onAdd() {
     const orders = this.orderService.getOrders();
+    const rawOrderName = (this.addForm.value.orderName || '').trim();
+    const isDuplicateName = orders.some(order =>
+      (order.orderName || '').trim().toLowerCase() === rawOrderName.toLowerCase()
+    );
+
+    if (!rawOrderName) {
+      this.toastr.error('Order name is required.');
+      return;
+    }
+
+    if (isDuplicateName) {
+      this.toastr.error('Order name already exists. Please use a different name.');
+      return;
+    }
 
     const nextId =
       orders.length > 0
@@ -151,7 +165,8 @@ export class OrderComponent implements OnInit {
 
     const newOrder: Orders = {
       id: nextId,
-      ...this.addForm.value
+      ...this.addForm.value,
+      orderName: rawOrderName
     };
 
     this.orderService.addOrder(newOrder);
