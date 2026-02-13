@@ -11,7 +11,7 @@
     </button>
   </div>
 
-  <div id="links">
+  <div id="links" [class.mobile-hidden]="hideRightButtons">
     <button mat-mini-fab routerLink="/home" aria-label="Home" class="nav-icon nav-btn">
       <mat-icon>home</mat-icon>
     </button>

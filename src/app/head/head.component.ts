@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { AlertServiceService } from '../alert/alert-service.service';
@@ -10,6 +10,7 @@ import { AlertServiceService } from '../alert/alert-service.service';
 export class HeadComponent implements OnInit {
 
   @Output() logoClick = new EventEmitter<void>();
+  @Input() hideRightButtons = false;
 
   toggleSidebar()
   {

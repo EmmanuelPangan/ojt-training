@@ -100,4 +100,8 @@
   .divider {
     display: none;
   }
+
+  #links.mobile-hidden {
+    display: none;
+  }
 }

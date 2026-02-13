@@ -127,3 +127,10 @@ ul li {
   background-color: #cce5ff;
 }
 
+.orders-table td .btn {
+  width: auto;
+  margin: 2px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+

@@ -11,7 +11,7 @@ import { ToastrService, ActiveToast} from 'ngx-toastr';
 })
 export class OrderComponent implements OnInit {
 
-  activeTab: 'add' | 'edit' | 'delete' = 'add';
+  activeTab: 'add' | 'edit' | 'delete' | 'completed' = 'add';
 
 
   addForm!: FormGroup;
@@ -19,6 +19,7 @@ export class OrderComponent implements OnInit {
   deleteForm!: FormGroup;
 
   orders: Orders[] = [];
+  completedOrderIds: number[] = [];
 
   private currentDeleteToast: ActiveToast<any> | null = null;
 
@@ -30,11 +31,16 @@ export class OrderComponent implements OnInit {
   this.initForms();
 
   this.orders = this.orderService.getOrders();
-  this.orderService.orders$.subscribe(orders => this.orders = orders);
+  this.loadCompletedOrderIds();
+  this.orderService.orders$.subscribe(orders => {
+    this.orders = orders;
+    this.completedOrderIds = this.completedOrderIds.filter(id => this.orders.some(order => order.id === id));
+    this.saveCompletedOrderIds();
+  });
 
   this.route.queryParams.subscribe(params => {
     const tab = params['tab'];
-    if (tab === 'add' || tab === 'edit' || tab === 'delete') {
+    if (tab === 'add' || tab === 'edit' || tab === 'delete' || tab === 'completed') {
       this.activeTab = tab;
     }
   });
@@ -66,11 +72,61 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  switchTab(tab: 'add' | 'edit' | 'delete') {
+  switchTab(tab: 'add' | 'edit' | 'delete' | 'completed') {
   this.activeTab = tab;
   this.router.navigate(['/orders'], {
     queryParams: { tab }
   });
+  }
+
+  get completedOrders(): Orders[] {
+    return this.orders.filter(order => this.completedOrderIds.includes(order.id));
+  }
+
+  isCompleted(id: number): boolean {
+    return this.completedOrderIds.includes(id);
+  }
+  onDeliveredToggle(id: number, event: Event): void {
+    const checked = (event.target as HTMLInputElement).checked;
+
+    if (checked) {
+      this.markCompleted(id);
+      return;
+    }
+
+    this.markIncomplete(id);
+  }
+  markCompleted(id: number): void {
+    if (!this.completedOrderIds.includes(id)) {
+      this.completedOrderIds.push(id);
+      this.saveCompletedOrderIds();
+      this.toastr.success('Order marked as Delivered!');
+    }
+  }
+
+  markIncomplete(id: number): void {
+    this.completedOrderIds = this.completedOrderIds.filter(orderId => orderId !== id);
+    this.saveCompletedOrderIds();
+    this.toastr.info('Order moved back to Add Order.');
+  }
+
+  private loadCompletedOrderIds(): void {
+    const raw = localStorage.getItem('completedOrderIds');
+    if (!raw) {
+      this.completedOrderIds = [];
+      return;
+    }
+
+    try {
+      const parsed = JSON.parse(raw);
+      this.completedOrderIds = Array.isArray(parsed) ? parsed.map(Number).filter(Number.isFinite) : [];
+    } catch {
+      this.completedOrderIds = [];
+    }
+  }
+
+  private saveCompletedOrderIds(): void {
+    localStorage.setItem('completedOrderIds', JSON.stringify(this.completedOrderIds));
   }
 
   onAdd() {
@@ -138,6 +194,8 @@ onDelete() {
 
   if (confirm(`Are you sure you want to delete "${existingOrder.orderName}"?`)) {
     this.orderService.deleteOrder(id); // Call service to delete
+    this.completedOrderIds = this.completedOrderIds.filter(orderId => orderId !== id);
+    this.saveCompletedOrderIds();
     this.deleteForm.reset();           // Reset dropdown
     this.toastr.success('Order Deleted!');
   }
@@ -167,3 +225,4 @@ selectOrderForEdit(order: any) {
 
 
 }
+

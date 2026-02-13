@@ -27,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
+import { CompletedTaskComponent } from './order/completed-task/completed-task.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { MatIconModule } from '@angular/material';
     AddTaskComponent,
     EditTaskComponent,
     DeleteTaskComponent,
+    CompletedTaskComponent,
   ],
   imports: [
     BrowserModule,

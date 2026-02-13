@@ -1,7 +1,7 @@
 <div class="container">
 <aside class="sidebar" [class.closed]="!isOpen">
-    <button type="button" class="sidebar-btn">Dashboard</button>
-    <button type="button" class="sidebar-btn">Booking</button>
-    <button type="button" class="sidebar-btn">Rooms</button>
+    <button type="button" class="sidebar-btn" (click)="onSidebarItemClick()">Dashboard</button>
+    <button type="button" class="sidebar-btn" (click)="onSidebarItemClick()">Booking</button>
+    <button type="button" class="sidebar-btn" (click)="onSidebarItemClick()">Rooms</button>
 </aside>
 </div>

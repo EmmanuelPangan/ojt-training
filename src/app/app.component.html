@@ -5,6 +5,7 @@
     *ngIf="authService.isLoggedIn()"
   [class.closed]="!isSidebarOpen"
   [isOpen]="isSidebarOpen"
+  (sidebarItemClick)="onSidebarInteraction()"
   class="sidebar">
 </app-left-sidebar>
 
@@ -14,6 +15,7 @@
       <!-- MOVE app-head here -->
       <app-head
         *ngIf="authService.isLoggedIn()"
+        [hideRightButtons]="hideRightButtonsOnMobile"
         (logoClick)="toggleSidebar()">
       </app-head>
 

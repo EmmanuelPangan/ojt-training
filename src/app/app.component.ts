@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'ojt-training';
 
   isSidebarOpen = false;
+  hideRightButtonsOnMobile = false;
   showHeader = true;
   constructor(private router:Router, private authService:AuthService)
   {
@@ -23,7 +24,22 @@ export class AppComponent {
   toggleSidebar ()
   {
     this.isSidebarOpen = !this.isSidebarOpen;
-  }A
+    if (this.isSmallDevice()) {
+      this.hideRightButtonsOnMobile = this.isSidebarOpen;
+    } else {
+      this.hideRightButtonsOnMobile = false;
+    }
+  }
+
+  onSidebarInteraction(): void {
+    if (this.isSmallDevice()) {
+      this.hideRightButtonsOnMobile = true;
+    }
+  }
+
+  private isSmallDevice(): boolean {
+    return window.matchMedia('(max-width: 640px)').matches;
+  }
 
   showHeaderAgain()
   {
