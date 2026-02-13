@@ -1,20 +1,33 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <p>Username</p>
-    <input formControlName="username" placeholder="Username">
-    <p>Email</p>
-    <input formControlName="email" placeholder="Email">
-    <p>Password</p>
-    <input formControlName="password" type="password" placeholder="Password">
-    <p>Confirm Password</p>
-    <input formControlName="confirmPassword" type="password" placeholder="Confirm Password">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="reg-form">
+    <h2>Create Account</h2>
 
-    <div *ngIf="registerForm.get('confirmPassword') && registerForm.get('confirmPassword').errors?.mismatch">
-        Passwords do not match
+    <div class="form-group">
+        <label>Username</label>
+        <input formControlName="username" placeholder="Enter your username">
     </div>
-    <br>
-    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input formControlName="email" placeholder="Enter your email">
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input formControlName="password" type="password" placeholder="Enter your password">
+    </div>
+
+    <div class="form-group">
+        <label>Confirm Password</label>
+        <input formControlName="confirmPassword" type="password" placeholder="Confirm your password">
+        <small class="error" *ngIf="registerForm.get('confirmPassword')?.errors?.mismatch">
+            Passwords do not match
+        </small>
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid" class="btn">Register</button>
+
     <div *ngIf="showBox" class="message-box">
         <p>Registration successful!</p>
-        <button (click)="closeBox()">Close</button>
+        <button (click)="closeBox()" class="btn close-btn">Close</button>
     </div>
 </form>

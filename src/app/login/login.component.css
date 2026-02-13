@@ -39,8 +39,9 @@
   transition: all 0.3s ease;
 }
 .Container input:focus {
-  background-color: #ffe4e1;
-  box-shadow: 0 0 5px rgba(255, 182, 193, 0.7);
+  background-color: #ffe4e1; 
+  box-shadow: 0 0 5px rgba(245, 91, 114, 0.7);
+  color: #ff69b4;
 }
 .Container p {
   margin-top: 15px;
@@ -68,7 +69,7 @@
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  background: linear-gradient(135deg, #ffb6c1, #ff69b4); 
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
   color: #fff;
   transition: all 0.3s ease;
 }
