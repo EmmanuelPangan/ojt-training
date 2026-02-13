@@ -1,99 +1,131 @@
 .prac {
-    max-width: 620px;
-    margin: 40px auto;
-    padding: 30px 35px;
-    background: linear-gradient(135deg, #fff0f5, #ffe4ec);
-    border-radius: 22px;
-    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.35);
-    font-family: 'Monospace', 'Lucida Console';
-  }
-  
-  .prac h1 {
-    text-align: center;
-    color: #ff69b4;
-    margin-bottom: 25px;
-    font-size: 32px;
-  }
-  
-  .prac h5 {
-    margin-top: 22px;
-    margin-bottom: 8px;
-    color: #d63384;
-    font-weight: 700;
-  }
-  
-  .prac input {
-    width: 100%;
-    padding: 10px 14px;
-    border-radius: 14px;
-    border: 1px solid #ffb6c1;
-    outline: none;
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  .prac input:disabled {
-    background: #ffe6f0;
-    cursor: not-allowed;
-  }
-  
-  .prac button {
-    padding: 8px 20px;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(135deg, #ff69b4, #ff85c1);
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .prac button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(255, 105, 180, 0.4);
-  }
-  
-  .prac p {
-    color: #444;
-    margin-top: 8px;
-  }
-  
-  .prac div[ng-reflect-ng-if],
-  .prac div *ngIf {
-    margin-top: 10px;
-  }
-  
-  .prac div[ng-reflect-ng-if],
-  .prac div[ngIf] {
-    padding: 8px 12px;
-    background: #ffb6c1;
-    color: white;
-    border-radius: 12px;
-    width: fit-content;
-  }
-  
-  .prac div *ngFor,
-  .prac div {
-    margin-bottom: 6px;
-  }
-  
-  .prac div {
-    color: #555;
-  }
-  
-  .prac p:last-child {
-    font-weight: 600;
-    color: #ff69b4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 114px);
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.prac>* {
+  max-width: 620px;
+  width: 100%;
+  padding: 30px 35px;
+  background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.35);
+  box-sizing: border-box;
+  font-family: 'Monospace', 'Lucida Console';
+}
+
+.prac h1 {
+  text-align: center;
+  color: #ff69b4;
+  margin-bottom: 25px;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.prac h5 {
+  margin-top: 22px;
+  margin-bottom: 8px;
+  color: #d63384;
+  font-weight: 700;
+}
+
+.prac input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid #ffb6c1;
+  outline: none;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.prac input:disabled {
+  background: #ffe6f0;
+  cursor: not-allowed;
+}
+
+.prac button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #ff69b4, #ff85c1);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prac button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(255, 105, 180, 0.4);
+}
+
+.prac p {
+  color: #444;
+  margin-top: 8px;
+}
+
+.prac div[ng-reflect-ng-if],
+.prac div *ngIf {
+  margin-top: 10px;
+}
+
+.prac div[ng-reflect-ng-if],
+.prac div[ngIf] {
+  padding: 8px 12px;
+  background: #ffb6c1;
+  color: white;
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.prac div *ngFor,
+.prac div {
+  margin-bottom: 6px;
+}
+
+.prac div {
+  color: #555;
+}
+
+.prac p:last-child {
+  font-weight: 600;
+  color: #ff69b4;
+}
+
+@media (max-width: 600px) {
+  .prac {
+    padding: 16px;
+    min-height: calc(100vh - 120px);
   }
 
-  @media (max-width: 600px) {
-    .prac {
-      margin: 20px;
-      padding: 22px;
-    }
-  
-    .prac h1 {
-      font-size: 26px;
-    }
+  .prac>* {
+    padding: 20px 16px;
   }
-  
+
+  .prac h1 {
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    margin-bottom: 18px;
+  }
+
+  .prac h5 {
+    margin-top: 16px;
+    font-size: 0.9rem;
+  }
+
+  .prac input {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .prac button {
+    padding: 7px 16px;
+    font-size: 14px;
+  }
+}

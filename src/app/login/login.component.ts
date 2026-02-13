@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { UserService } from '../user.service';
@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   username = '';
   password = '';
   error = '';
@@ -22,26 +22,46 @@ export class LoginComponent {
     private fb: FormBuilder,
   ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
+  ngOnInit() {
+    this.prefillRegisteredUsername();
+  }
+
+  prefillRegisteredUsername() {
+    const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+
+    // If users exist, get the last registered user's username
+    if (existingUsers.length > 0) {
+      const lastUser = existingUsers[existingUsers.length - 1];
+      this.loginForm.patchValue({
+        username: lastUser.username
+      });
+    }
+  }
+
   onLogin() {
     if (this.loginForm.invalid) {
-      alert('⚠ Please fill all fields');
+      this.error = 'Please fill all fields correctly';
       return;
     }
 
-    const { email, password } = this.loginForm.value;
-
-    const isValid = this.userService.login(email, password);
+    const { username, password } = this.loginForm.value;
+    const isValid = this.userService.login(username, password);
 
     if (isValid) {
-      alert('✅ Login successful!');
-      localStorage.setItem('loggedInUser', email);
+      localStorage.setItem('loggedInUser', username);
+      this.authService.login(username, password);
+
+      // Clear browser history to prevent back arrow from returning to login
+      window.history.replaceState(null, '', '/home');
+
+      this.router.navigate(['/home']);
     } else {
-      alert('❌ Invalid email or password');
+      this.error = 'Invalid username or password';
     }
   }
 
@@ -51,14 +71,18 @@ export class LoginComponent {
     console.log('AuthService.isLogin():', this.authService.isLogin());
     if (success) {
       console.log('Routing to exercise');
+
+      // Clear browser history to prevent back arrow from returning to login
+      window.history.replaceState(null, '', '/home');
+
       this.router.navigate(['/home']);
     } else {
       console.log('Invalid credentials');
       this.error = 'Invalid username or password';
     }
   }
+
   goToRegister() {
     this.router.navigate(['/register']);
   }
-
 }

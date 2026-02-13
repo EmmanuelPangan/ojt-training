@@ -1,12 +1,23 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 114px);
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 .todo-container {
-  max-width: 500px;
-  margin: 30px auto;
-  padding: 25px;
+  width: 100%;
+  max-width: 600px;
+  padding: 28px;
   background: linear-gradient(135deg, #ffe4e1, #ffcce6);
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
   font-family: 'Monospace', 'Lucida Console';
   color: black;
+  box-sizing: border-box;
 }
 
 
@@ -14,7 +25,7 @@
   text-align: center;
   margin-bottom: 20px;
   color: #ff1493;
-  font-size: 24px;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
 }
 
 
@@ -35,7 +46,7 @@
 }
 
 .input-group input:focus {
-  border-color: #ff69b4; 
+  border-color: #ff69b4;
   box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
 }
 
@@ -97,7 +108,7 @@ li {
   padding: 10px 15px;
   margin-bottom: 10px;
   border-radius: 20px;
-  background: #fff0f5; 
+  background: #fff0f5;
   box-shadow: 0 4px 8px rgba(255, 105, 180, 0.1);
   transition: all 0.3s ease;
 }
@@ -150,7 +161,7 @@ li .delete {
 }
 
 .edit-box button:first-child {
-  background: #ff69b4; 
+  background: #ff69b4;
 }
 
 .edit-box button:last-child {
@@ -158,29 +169,243 @@ li .delete {
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .todo-container {
-    padding: 20px 15px;
+    max-width: 100%;
+    padding: 22px;
+  }
+
+  .todo-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .input-group {
+    gap: 8px;
+  }
+
+  .input-group input {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  .input-group button {
+    padding: 9px 15px;
+    font-size: 14px;
+  }
+
+  .filters {
+    gap: 8px;
+  }
+
+  .filters button {
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+
+  li {
+    gap: 8px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+  }
+
+  .edit-box {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .edit-box input {
+    padding: 5px 8px;
+    font-size: 13px;
+  }
+
+  .edit-box button {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  :host {
+    padding: 16px;
+    min-height: calc(100vh - 120px);
+  }
+
+  .todo-container {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .todo-container h2 {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
   }
 
   .input-group {
     flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
   }
 
   .input-group button {
     width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .filters {
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .filters button {
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  ul {
+    padding: 0;
   }
 
   li {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  li span {
+    width: 100%;
+    word-wrap: break-word;
+  }
+
+  li button {
+    width: 100%;
+    padding: 6px;
+    text-align: center;
+  }
+
+  li button.delete {
+    width: 100%;
   }
 
   .edit-box {
+    width: 100%;
     flex-direction: column;
+    gap: 6px;
+  }
+
+  .edit-box input {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 13px;
   }
 
   .edit-box button {
     width: 100%;
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  :host {
+    padding: 12px;
+    min-height: calc(100vh - 125px);
+  }
+
+  .todo-container {
+    padding: 14px;
+    border-radius: 14px;
+    max-width: 100%;
+  }
+
+  .todo-container h2 {
+    font-size: 1rem;
+    margin-bottom: 14px;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 13px;
+    border-radius: 15px;
+  }
+
+  .input-group button {
+    width: 100%;
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .filters {
+    gap: 5px;
+    margin-bottom: 14px;
+  }
+
+  .filters button {
+    flex: 1;
+    padding: 5px 6px;
+    font-size: 11px;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+
+  li span {
+    width: 100%;
+    word-break: break-word;
+    font-size: 13px;
+  }
+
+  li input[type="checkbox"] {
+    margin-bottom: 4px;
+  }
+
+  li button {
+    width: auto;
+    font-size: 14px;
+    padding: 4px;
+  }
+
+  li button.delete {
+    align-self: flex-end;
+    width: auto;
+  }
+
+  .edit-box {
+    width: 100%;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .edit-box input {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .edit-box button {
+    width: 100%;
+    padding: 6px 4px;
+    font-size: 11px;
   }
 }

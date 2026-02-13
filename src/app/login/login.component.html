@@ -1,19 +1,21 @@
 <div class="login-wrapper">
-  <div class="Container">
+  <div class="container">
     <h2>Login</h2>
 
-    <input [(ngModel)]="username" placeholder="Username" />
-    <input [(ngModel)]="password" type="password" placeholder="Password" />
-    <br />
-    <p>
-      Don't have an account?
-      <button routerLink="/register" routerLinkActive="Active">Register</button>
-    </p>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <input formControlName="username" type="text" placeholder="Username" />
+      <input formControlName="password" type="password" placeholder="Password" />
 
-    <button (click)="login()">
-      Login
-    </button>
+      <p>
+        Don't have an account?
+        <button type="button" routerLink="/register" routerLinkActive="Active">Register</button>
+      </p>
 
-    <p style="color:red">{{ error }}</p>
+      <button type="submit" [disabled]="loginForm.invalid">
+        Login
+      </button>
+    </form>
+
+    <p style="color:red" *ngIf="error">{{ error }}</p>
   </div>
 </div>

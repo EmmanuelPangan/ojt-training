@@ -21,12 +21,12 @@ export class UserService {
     const users = this.getUsers();
     return users.some((u: any) => u.email === email);
   }
-  login(email: string, password: string): boolean {
+  login(username: string, password: string): boolean {
     const users = this.getUsers();
 
     return users.some(
       (user: any) =>
-        user.email === email && user.password === password
+        user.username === username && user.password === password
     );
   }
 }

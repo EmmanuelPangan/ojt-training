@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./pages/home/home.component";
-import { AuthGuard } from "./auth.guard";
+import { AuthGuard, NoAuthGuard } from "./auth.guard";
 import { LoginComponent } from "./login/login.component";
 import { ExcerciseComponent } from "./excercise/excercise.component";
 import { ListcomponentComponent } from "./listcomponent/listcomponent.component";
@@ -12,7 +12,7 @@ import { TodolistComponent } from './todolist/todolist.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: "login", component: LoginComponent },
+  { path: "login", component: LoginComponent, canActivate: [NoAuthGuard] },
   { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
   {
     path: "excercise",
@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: '', component: ListcomponentComponent },
   { path: "detail/:id", component: DetailComponent },
   { path: "address", component: AddressComponent, canActivate: [AuthGuard] },
-  { path: "register", component: RegisterComponent },
+  { path: "register", component: RegisterComponent, canActivate: [NoAuthGuard] },
   { path: "", redirectTo: "login", pathMatch: "full" },
   { path: "**", component: PagenotfoundComponent }
 ];
