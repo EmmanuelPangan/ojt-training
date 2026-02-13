@@ -134,3 +134,25 @@ ul li {
   font-size: 13px;
 }
 
+.orders-table th.actions-col,
+.orders-table td.actions-col {
+  text-align: center;
+}
+
+.orders-table th.id-col,
+.orders-table td.id-col,
+.orders-table th.name-col,
+.orders-table td.name-col,
+.orders-table th.qty-col,
+.orders-table td.qty-col,
+.orders-table th.price-col,
+.orders-table td.price-col {
+  text-align: center;
+}
+
+.orders-table th.check-col,
+.orders-table td.check-col {
+  width: 40px;
+  text-align: center;
+}
+
