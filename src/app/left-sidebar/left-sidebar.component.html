@@ -1,5 +1,5 @@
 <div class="container">
-<aside class="sidebar" [class.closed]="!isOpen">
+<aside class="sidebar" [class.closed]="!isOpen" (mouseleave)="onSidebarMouseLeave()">
     <button type="button" class="sidebar-btn" (click)="onSidebarItemClick()">Dashboard</button>
     <button type="button" class="sidebar-btn" (click)="onSidebarItemClick()">Booking</button>
     <button type="button" class="sidebar-btn" (click)="onSidebarItemClick()">Rooms</button>

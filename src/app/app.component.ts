@@ -46,8 +46,21 @@ export class AppComponent {
     this.hideRightButtonsOnMobile = false;
   }
 
+  onSidebarMouseLeave(): void {
+    if (!this.isSidebarOpen || !this.isHoverDevice()) {
+      return;
+    }
+
+    this.isSidebarOpen = false;
+    this.hideRightButtonsOnMobile = false;
+  }
+
   private isSmallDevice(): boolean {
     return window.matchMedia('(max-width: 640px)').matches;
+  }
+
+  private isHoverDevice(): boolean {
+    return window.matchMedia('(hover: hover)').matches;
   }
 
   showHeaderAgain()

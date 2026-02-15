@@ -43,6 +43,10 @@
   overflow-y: auto;
 }
 
+.content.sidebar-open button {
+  pointer-events: none;
+}
+
 .top-bar-wrapper {
   position: relative; /* anchor */
 }

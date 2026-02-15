@@ -9,6 +9,7 @@ export class LeftSidebarComponent implements OnInit {
 
   @Input() isOpen = false;
   @Output() sidebarItemClick = new EventEmitter<void>();
+  @Output() sidebarMouseLeave = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit() {
@@ -16,5 +17,9 @@ export class LeftSidebarComponent implements OnInit {
 
   onSidebarItemClick(): void {
     this.sidebarItemClick.emit();
+  }
+
+  onSidebarMouseLeave(): void {
+    this.sidebarMouseLeave.emit();
   }
 }

@@ -6,6 +6,7 @@
   [class.closed]="!isSidebarOpen"
   [isOpen]="isSidebarOpen"
   (sidebarItemClick)="onSidebarInteraction()"
+  (sidebarMouseLeave)="onSidebarMouseLeave()"
   class="sidebar">
 </app-left-sidebar>
 
@@ -21,7 +22,7 @@
 
     
 
-      <div class="content" (click)="onMainContentClick()">
+      <div class="content" [class.sidebar-open]="isSidebarOpen" (click)="onMainContentClick()">
         <app-alert-message></app-alert-message>
         <router-outlet></router-outlet>
       </div>

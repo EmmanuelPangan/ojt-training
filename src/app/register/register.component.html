@@ -16,28 +16,58 @@
     <h2>Sign Up</h2>
     <p class="subtitle">Fill in your details to create a new account.</p>
 
-    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
       <div class="field">
         <label for="email">Email</label>
         <input id="email" type="email" formControlName="email" placeholder="Enter your email">
+        <small
+          *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')"
+          class="error-message"
+        >
+          Email is required.
+        </small>
+        <small
+          *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')"
+          class="error-message"
+        >
+          Enter a valid email address.
+        </small>
       </div>
 
       <div class="field">
         <label for="username">Username</label>
         <input id="username" type="text" formControlName="username" placeholder="Choose a username">
+        <small
+          *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.hasError('required')"
+          class="error-message"
+        >
+          Username is required.
+        </small>
       </div>
 
       <div class="field">
         <label for="password">Password</label>
         <input id="password" type="password" formControlName="password" placeholder="Create a password">
+        <small
+          *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')"
+          class="error-message"
+        >
+          Password is required.
+        </small>
       </div>
 
       <div class="field">
         <label for="confirm-password">Confirm Password</label>
-        <input id="confirm-password" type="password" formControlName="c-password" placeholder="Re-enter your password">
+        <input id="confirm-password" type="password" formControlName="confirmPassword" placeholder="Re-enter your password">
+        <small
+          *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.hasError('required')"
+          class="error-message"
+        >
+          Please confirm your password.
+        </small>
       </div>
 
-      <button type="submit">Register</button>
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
 
       <p *ngIf="error" class="error-message">{{ error }}</p>
     </form>
