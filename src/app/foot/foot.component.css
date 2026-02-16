@@ -1,11 +1,11 @@
 #foot-container
 {
-        display: flex;
+    display: flex;
+    justify-content: center;
     padding: 20px 30px;
     background-color: lightblue;
     gap: 20px;
-
-
+    text-align: center;
 }
 
 #left-part
@@ -18,6 +18,11 @@
 #mid-part
 {
     display: list-item;
+}
+
+.text
+{
+    text-align: center;
 }
 
    

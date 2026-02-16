@@ -21,13 +21,13 @@
         <label for="email">Email</label>
         <input id="email" type="email" formControlName="email" placeholder="Enter your email">
         <small
-          *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')"
+          *ngIf="(registerForm.get('email')?.dirty || registerForm.get('email')?.touched) && registerForm.get('email')?.hasError('required')"
           class="error-message"
         >
           Email is required.
         </small>
         <small
-          *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')"
+          *ngIf="(registerForm.get('email')?.dirty || registerForm.get('email')?.touched) && registerForm.get('email')?.hasError('email')"
           class="error-message"
         >
           Enter a valid email address.
@@ -38,7 +38,7 @@
         <label for="username">Username</label>
         <input id="username" type="text" formControlName="username" placeholder="Choose a username">
         <small
-          *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.hasError('required')"
+          *ngIf="(registerForm.get('username')?.dirty || registerForm.get('username')?.touched) && registerForm.get('username')?.hasError('required')"
           class="error-message"
         >
           Username is required.
@@ -47,20 +47,62 @@
 
       <div class="field">
         <label for="password">Password</label>
-        <input id="password" type="password" formControlName="password" placeholder="Create a password">
+        <div class="password-input-wrap">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="Create a password"
+          >
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePasswordVisibility()"
+            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+          >
+            <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
         <small
-          *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')"
+          *ngIf="(registerForm.get('password')?.dirty || registerForm.get('password')?.touched) && registerForm.get('password')?.hasError('required')"
           class="error-message"
         >
           Password is required.
+        </small>
+        <small
+          *ngIf="(registerForm.get('password')?.dirty || registerForm.get('password')?.touched) && registerForm.get('password')?.hasError('minlength')"
+          class="error-message"
+        >
+          Password must be at least 8 characters.
+        </small>
+        <small
+          *ngIf="(registerForm.get('password')?.dirty || registerForm.get('password')?.touched) && !registerForm.get('password')?.hasError('required') && registerForm.get('password')?.hasError('pattern')"
+          class="error-message"
+        >
+          Password must include uppercase, lowercase, number, and special character.
         </small>
       </div>
 
       <div class="field">
         <label for="confirm-password">Confirm Password</label>
-        <input id="confirm-password" type="password" formControlName="confirmPassword" placeholder="Re-enter your password">
+        <div class="password-input-wrap">
+          <input
+            id="confirm-password"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            placeholder="Re-enter your password"
+          >
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="toggleConfirmPasswordVisibility()"
+            [attr.aria-label]="showConfirmPassword ? 'Hide confirm password' : 'Show confirm password'"
+          >
+            <mat-icon>{{ showConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
         <small
-          *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.hasError('required')"
+          *ngIf="(registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched) && registerForm.get('confirmPassword')?.hasError('required')"
           class="error-message"
         >
           Please confirm your password.
