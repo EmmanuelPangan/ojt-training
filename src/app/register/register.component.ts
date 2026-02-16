@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 @Component({
@@ -8,30 +8,22 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup;
   error = '';
   showPassword = false;
   showConfirmPassword = false;
+  passwordPattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).+$';
+  formData = {
+    email: '',
+    username: '',
+    gender: '',
+    password: '',
+    confirmPassword: ''
+  };
 
   constructor(
-    private fb: FormBuilder,
     private authService: AuthService,
     private router: Router
-  ) {
-    this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      username: ['', [Validators.required]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/)
-        ]
-      ],
-      confirmPassword: ['', [Validators.required]]
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
   }
@@ -44,13 +36,13 @@ export class RegisterComponent implements OnInit {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
 
-  submit(): void {
-    if (this.registerForm.invalid) {
+  submit(form: NgForm): void {
+    if (form.invalid) {
       this.error = 'Please fill the form correctly';
       return;
     }
 
-    const { email, password, confirmPassword } = this.registerForm.value;
+    const { email, password, confirmPassword } = this.formData;
     if (password !== confirmPassword) {
       this.error = 'Passwords do not match';
       return;
@@ -63,5 +55,17 @@ export class RegisterComponent implements OnInit {
     }
 
     this.error = 'Unable to register. Please try again.';
+  }
+
+  isRegisterDisabled(form: NgForm): boolean {
+    const { email, username, gender, password, confirmPassword } = this.formData;
+    const isIncomplete =
+      !(email && email.trim()) ||
+      !(username && username.trim()) ||
+      !(gender && gender.trim()) ||
+      !(password && password.trim()) ||
+      !(confirmPassword && confirmPassword.trim());
+
+    return form.invalid || isIncomplete || password !== confirmPassword;
   }
 }

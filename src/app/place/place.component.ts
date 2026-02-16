@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { LocationService } from '../services/location.service';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
@@ -43,7 +43,8 @@ export class PlaceComponent implements OnInit {
     this.locationForm = this.fb.group({
       province: [''],
       townCity: [{ value: '', disabled: true }],
-      barangay: [{ value: '', disabled: true }]
+      barangay: [{ value: '', disabled: true }],
+      landmarks: this.fb.array([this.fb.control('')])
     });
 
     this.loadProvinces();
@@ -261,14 +262,34 @@ export class PlaceComponent implements OnInit {
   getBarangayName(barangay: any): string {
     return barangay.barangay || barangay.name || barangay;
   }
+
+  get landmarks(): FormArray {
+    return this.locationForm.get('landmarks') as FormArray;
+  }
+
+  addLandmark(): void {
+    this.landmarks.push(this.fb.control(''));
+  }
+
+  removeLandmark(index: number): void {
+    if (this.landmarks.length === 1) {
+      return;
+    }
+    this.landmarks.removeAt(index);
+  }
   
   saveLocation()
   {
+    const cleanedLandmarks = (this.landmarks.value || [])
+      .map((item: string) => (item || '').trim())
+      .filter((item: string) => item.length > 0);
+
     const payload = 
     {
       province : this.locationForm.value.province,
       townCity : this.locationForm.value.townCity,
-      barangay : this.locationForm.value.barangay
+      barangay : this.locationForm.value.barangay,
+      landmarks: cleanedLandmarks
     };
 
     this.locationService.saveLocation(payload).subscribe(response => {

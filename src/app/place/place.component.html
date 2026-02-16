@@ -93,6 +93,31 @@
           </div>
         </div>
 
+        <div class="field" formArrayName="landmarks">
+          <label>Nearby Landmarks (Dynamic Form)</label>
+          <div class="dynamic-list">
+            <div class="dynamic-row" *ngFor="let landmarkControl of landmarks.controls; let i = index">
+              <input
+                class="search-input"
+                type="text"
+                [formControlName]="i"
+                placeholder="Enter landmark name"
+              />
+              <button
+                type="button"
+                class="dynamic-btn remove-btn"
+                (click)="removeLandmark(i)"
+                [disabled]="landmarks.length === 1"
+              >
+                Remove
+              </button>
+            </div>
+            <button type="button" class="dynamic-btn add-btn" (click)="addLandmark()">
+              Add Landmark
+            </button>
+          </div>
+        </div>
+
         <button mat-raised-button color="accent" type="submit" [disabled]="locationForm.invalid">
           <mat-icon>save</mat-icon>
           Save Location

@@ -123,6 +123,41 @@ select:focus {
   border-bottom: 0;
 }
 
+.dynamic-list {
+  display: grid;
+  gap: 8px;
+}
+
+.dynamic-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.dynamic-btn {
+  border: 1px solid rgba(18, 70, 94, 0.22);
+  border-radius: 8px;
+  background: #f2fbff;
+  color: #12465e;
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.dynamic-btn:hover {
+  background: #e6f4fb;
+}
+
+.dynamic-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.add-btn {
+  justify-self: start;
+}
+
 .loading-pill {
   width: 22px;
   height: 22px;

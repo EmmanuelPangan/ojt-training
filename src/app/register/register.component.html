@@ -16,18 +16,27 @@
     <h2>Sign Up</h2>
     <p class="subtitle">Fill in your details to create a new account.</p>
 
-    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <form #registerForm="ngForm" (ngSubmit)="submit(registerForm)">
       <div class="field">
         <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email" placeholder="Enter your email">
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [(ngModel)]="formData.email"
+          #email="ngModel"
+          placeholder="Enter your email"
+          required
+          email
+        >
         <small
-          *ngIf="(registerForm.get('email')?.dirty || registerForm.get('email')?.touched) && registerForm.get('email')?.hasError('required')"
+          *ngIf="(email.dirty || email.touched) && email.errors?.required"
           class="error-message"
         >
           Email is required.
         </small>
         <small
-          *ngIf="(registerForm.get('email')?.dirty || registerForm.get('email')?.touched) && registerForm.get('email')?.hasError('email')"
+          *ngIf="(email.dirty || email.touched) && email.errors?.email"
           class="error-message"
         >
           Enter a valid email address.
@@ -36,12 +45,53 @@
 
       <div class="field">
         <label for="username">Username</label>
-        <input id="username" type="text" formControlName="username" placeholder="Choose a username">
+        <input
+          id="username"
+          type="text"
+          name="username"
+          [(ngModel)]="formData.username"
+          #username="ngModel"
+          placeholder="Choose a username"
+          required
+        >
         <small
-          *ngIf="(registerForm.get('username')?.dirty || registerForm.get('username')?.touched) && registerForm.get('username')?.hasError('required')"
+          *ngIf="(username.dirty || username.touched) && username.errors?.required"
           class="error-message"
         >
           Username is required.
+        </small>
+      </div>
+
+      <div class="field">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input
+              type="radio"
+              name="gender"
+              [(ngModel)]="formData.gender"
+              #gender="ngModel"
+              value="Male"
+              required
+            >
+            <span>Male</span>
+          </label>
+          <label class="radio-option">
+            <input
+              type="radio"
+              name="gender"
+              [(ngModel)]="formData.gender"
+              value="Female"
+              required
+            >
+            <span>Female</span>
+          </label>
+        </div>
+        <small
+          *ngIf="(gender.dirty || gender.touched) && gender.errors?.required"
+          class="error-message"
+        >
+          Please select your gender.
         </small>
       </div>
 
@@ -51,8 +101,13 @@
           <input
             id="password"
             [type]="showPassword ? 'text' : 'password'"
-            formControlName="password"
+            name="password"
+            [(ngModel)]="formData.password"
+            #password="ngModel"
             placeholder="Create a password"
+            required
+            minlength="8"
+            [pattern]="passwordPattern"
           >
           <button
             type="button"
@@ -64,19 +119,19 @@
           </button>
         </div>
         <small
-          *ngIf="(registerForm.get('password')?.dirty || registerForm.get('password')?.touched) && registerForm.get('password')?.hasError('required')"
+          *ngIf="(password.dirty || password.touched) && password.errors?.required"
           class="error-message"
         >
           Password is required.
         </small>
         <small
-          *ngIf="(registerForm.get('password')?.dirty || registerForm.get('password')?.touched) && registerForm.get('password')?.hasError('minlength')"
+          *ngIf="(password.dirty || password.touched) && password.errors?.minlength"
           class="error-message"
         >
           Password must be at least 8 characters.
         </small>
         <small
-          *ngIf="(registerForm.get('password')?.dirty || registerForm.get('password')?.touched) && !registerForm.get('password')?.hasError('required') && registerForm.get('password')?.hasError('pattern')"
+          *ngIf="(password.dirty || password.touched) && !password.errors?.required && password.errors?.pattern"
           class="error-message"
         >
           Password must include uppercase, lowercase, number, and special character.
@@ -89,8 +144,11 @@
           <input
             id="confirm-password"
             [type]="showConfirmPassword ? 'text' : 'password'"
-            formControlName="confirmPassword"
+            name="confirmPassword"
+            [(ngModel)]="formData.confirmPassword"
+            #confirmPassword="ngModel"
             placeholder="Re-enter your password"
+            required
           >
           <button
             type="button"
@@ -102,14 +160,20 @@
           </button>
         </div>
         <small
-          *ngIf="(registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched) && registerForm.get('confirmPassword')?.hasError('required')"
+          *ngIf="(confirmPassword.dirty || confirmPassword.touched) && confirmPassword.errors?.required"
           class="error-message"
         >
           Please confirm your password.
         </small>
+        <small
+          *ngIf="(confirmPassword.dirty || confirmPassword.touched) && !confirmPassword.errors?.required && formData.password !== formData.confirmPassword"
+          class="error-message"
+        >
+          Passwords do not match.
+        </small>
       </div>
 
-      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+      <button type="submit" [disabled]="isRegisterDisabled(registerForm)">Register</button>
 
       <p *ngIf="error" class="error-message">{{ error }}</p>
     </form>
