@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
           console.error('Error comparing passwords:', err);
           return of(false);
         })
+
       )
       .subscribe((isMatch: boolean) => {
         const confirmCtrl = this.registerForm.get('confirmPassword');

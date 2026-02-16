@@ -31,12 +31,14 @@
 
 .input-group {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
 }
 
 .input-group input {
   flex: 1;
+  min-width: 150px;
   padding: 10px 15px;
   border-radius: 25px;
   border: 2px solid #ffb6c1;
@@ -59,12 +61,62 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .input-group button:hover {
   background: linear-gradient(135deg, #ff69b4, #ff1493);
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+}
+
+.input-group select {
+  flex: 0 1 150px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 2px solid #ffb6c1;
+  font-size: 14px;
+  background-color: #fff0f5;
+  color: #000;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group select:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+}
+
+.search-box {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #ffb6c1;
+  border-radius: 25px;
+  font-size: 14px;
+  text-align: center;
+  background-color: #fff0f5;
+  color: #000;
+  font-family: 'Monospace', 'Lucida Console';
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-box input::placeholder {
+  color: #ff69b4;
+  opacity: 0.7;
+}
+
+.search-box input:focus {
+  border-color: #ff69b4;
+  background-color: #ffe4e1;
+  box-shadow: 0 0 8px rgba(255, 105, 180, 0.3);
 }
 
 .filters {
@@ -102,7 +154,7 @@ ul {
 
 li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
   padding: 10px 15px;
@@ -111,10 +163,67 @@ li {
   background: #fff0f5;
   box-shadow: 0 4px 8px rgba(255, 105, 180, 0.1);
   transition: all 0.3s ease;
+  border-left: 4px solid #ffb6c1;
+}
+
+li.status-pending {
+  border-left-color: #ffa500;
+}
+
+li.status-progress {
+  border-left-color: #4169e1;
+}
+
+li.status-completed {
+  border-left-color: #28a745;
 }
 
 li:hover {
   box-shadow: 0 6px 12px rgba(255, 105, 180, 0.2);
+}
+
+.task-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-details {
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-details p {
+  margin: 0;
+  padding: 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.status-badge.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.status-in-progress {
+  background-color: #cfe2ff;
+  color: #084298;
+}
+
+.status-badge.status-completed {
+  background-color: #d1e7dd;
+  color: #0f5132;
 }
 
 .completed {
@@ -128,10 +237,15 @@ li button {
   cursor: pointer;
   font-size: 16px;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 li button:hover {
   transform: scale(1.2);
+}
+
+li button.edit-btn {
+  margin-top: 5px;
 }
 
 li .delete {
@@ -140,15 +254,29 @@ li .delete {
 
 .edit-box {
   display: flex;
-  gap: 5px;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
 }
 
-.edit-box input {
-  flex: 1;
+.edit-box input,
+.edit-box select {
   padding: 6px 10px;
-  border-radius: 20px;
+  border-radius: 15px;
   border: 2px solid #ffb6c1;
   outline: none;
+  font-size: 13px;
+}
+
+.edit-box input:focus,
+.edit-box select:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 0 4px rgba(255, 105, 180, 0.3);
+}
+
+.edit-box select {
+  background-color: #fff0f5;
+  cursor: pointer;
 }
 
 .edit-box button {
@@ -191,6 +319,11 @@ li .delete {
   .input-group button {
     padding: 9px 15px;
     font-size: 14px;
+  }
+
+  .input-group select {
+    padding: 9px 12px;
+    font-size: 13px;
   }
 
   .filters {
@@ -258,6 +391,21 @@ li .delete {
     font-size: 14px;
   }
 
+  .input-group select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .search-box {
+    margin-bottom: 12px;
+  }
+
+  .search-box input {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
   .filters {
     gap: 6px;
     margin-bottom: 16px;
@@ -281,19 +429,29 @@ li .delete {
     margin-bottom: 10px;
   }
 
+  .task-content {
+    width: 100%;
+  }
+
+  .task-details {
+    font-size: 11px;
+    margin-top: 4px;
+  }
+
   li span {
     width: 100%;
     word-wrap: break-word;
   }
 
   li button {
-    width: 100%;
+    width: auto;
     padding: 6px;
     text-align: center;
   }
 
   li button.delete {
-    width: 100%;
+    width: auto;
+    align-self: flex-end;
   }
 
   .edit-box {
@@ -302,7 +460,8 @@ li .delete {
     gap: 6px;
   }
 
-  .edit-box input {
+  .edit-box input,
+  .edit-box select {
     width: 100%;
     padding: 8px 10px;
     font-size: 13px;
@@ -349,6 +508,21 @@ li .delete {
     width: 100%;
     padding: 8px;
     font-size: 13px;
+  }
+
+  .input-group select {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .search-box {
+    margin-bottom: 10px;
+  }
+
+  .search-box input {
+    padding: 7px 10px;
+    font-size: 12px;
   }
 
   .filters {

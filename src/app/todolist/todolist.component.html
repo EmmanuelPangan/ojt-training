@@ -3,7 +3,17 @@
 
     <div class="input-group">
         <input type="text" [(ngModel)]="newTask" placeholder="Enter a task" (keyup.enter)="addTask()" />
+        <input type="datetime-local" [(ngModel)]="newDateStarted" placeholder="Start Date" />
+        <input type="datetime-local" [(ngModel)]="newDateFinish" placeholder="Finish Date" />
+        <select [(ngModel)]="newStatus">
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select>
         <button (click)="addTask()">Add</button>
+    </div>
+    <div class="search-box">
+        <input type="text" [(ngModel)]="searchLetter" placeholder="🔍 Search by first letter..." maxlength="1" />
     </div>
     <div class="filters">
         <button (click)="setFilter('all')" [class.active]="filter === 'all'">
@@ -17,23 +27,40 @@
         </button>
     </div>
     <ul>
-        <li *ngFor="let todo of todos; let i = index">
+        <li *ngFor="let todo of filteredTodos; let i = index" [class.status-pending]="todo.status === 'pending'"
+            [class.status-progress]="todo.status === 'in-progress'"
+            [class.status-completed]="todo.status === 'completed'">
             <input type="checkbox" [checked]="todo.completed" (change)="toggleComplete(todo)" />
 
-            <span *ngIf="editIndex !== i" [class.completed]="todo.completed">
-                {{ todo.text }}
-            </span>
+            <div class="task-content">
+                <span *ngIf="editIndex !== i" [class.completed]="todo.completed">
+                    {{ todo.text }}
+                </span>
 
-            <button *ngIf="editIndex !== i" (click)="startEdit(i)">
+                <div *ngIf="editIndex !== i" class="task-details">
+                    <p><strong>Start:</strong> {{ todo.dateStarted ? (todo.dateStarted | date:'short') : 'N/A' }}</p>
+                    <p><strong>Finish:</strong> {{ todo.dateFinish ? (todo.dateFinish | date:'short') : 'N/A' }}</p>
+                    <p><strong>Status:</strong> <span class="status-badge" [ngClass]="'status-' + todo.status">{{
+                            todo.status | titlecase }}</span></p>
+                </div>
+
+                <div *ngIf="editIndex === i" class="edit-box">
+                    <input type="text" [(ngModel)]="editTaskText" placeholder="Task" (keyup.enter)="saveEdit()" />
+                    <input type="datetime-local" [(ngModel)]="editDateStarted" />
+                    <input type="datetime-local" [(ngModel)]="editDateFinish" />
+                    <select [(ngModel)]="editStatus">
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                    <button (click)="saveEdit()">✔</button>
+                    <button (click)="cancelEdit()">✖</button>
+                </div>
+            </div>
+
+            <button *ngIf="editIndex !== i" (click)="startEdit(i)" class="edit-btn">
                 ✏️
             </button>
-
-
-            <div *ngIf="editIndex === i" class="edit-box">
-                <input type="text" [(ngModel)]="editTaskText" (keyup.enter)="saveEdit()" />
-                <button (click)="saveEdit()">✔</button>
-                <button (click)="cancelEdit()">✖</button>
-            </div>
 
             <button class="delete" (click)="deleteTask(i)">🗑</button>
         </li>
