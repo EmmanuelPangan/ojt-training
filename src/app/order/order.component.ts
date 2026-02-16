@@ -98,6 +98,41 @@ export class OrderComponent implements OnInit {
   isCompleted(id: number): boolean {
     return this.completedOrderIds.includes(id);
   }
+
+  isAllVisibleCompleted(): boolean {
+    if (this.activeTab !== 'add' || this.filteredOrders.length === 0) {
+      return false;
+    }
+
+    return this.filteredOrders.every(order => this.isCompleted(order.id));
+  }
+
+  isSomeVisibleCompleted(): boolean {
+    if (this.activeTab !== 'add' || this.filteredOrders.length === 0) {
+      return false;
+    }
+
+    const completedCount = this.filteredOrders.filter(order => this.isCompleted(order.id)).length;
+    return completedCount > 0 && completedCount < this.filteredOrders.length;
+  }
+
+  onToggleAllVisible(event: Event): void {
+    const checked = (event.target as HTMLInputElement).checked;
+
+    this.filteredOrders.forEach(order => {
+      if (checked) {
+        if (!this.isCompleted(order.id)) {
+          this.completedOrderIds.push(order.id);
+        }
+        return;
+      }
+
+      this.completedOrderIds = this.completedOrderIds.filter(orderId => orderId !== order.id);
+    });
+
+    this.saveCompletedOrderIds();
+  }
+
   onDeliveredToggle(id: number, event: Event): void {
     const checked = (event.target as HTMLInputElement).checked;
 

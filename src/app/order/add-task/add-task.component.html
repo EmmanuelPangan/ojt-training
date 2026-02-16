@@ -5,6 +5,12 @@
     <div class="form-group">
       <label for="orderName">Order Name</label>
       <input type="text" id="orderName" formControlName="orderName" placeholder="Enter order name">
+      <small
+        class="error-message"
+        *ngIf="addForm.get('orderName')?.touched && addForm.get('orderName')?.hasError('hasNumber')"
+      >
+        Order Name must not contain numbers.
+      </small>
     </div>
 
     <div class="form-group">

@@ -25,7 +25,15 @@
 <table class="orders-table" *ngIf="activeTab !== 'completed'">
   <thead>
     <tr>
-      <th class="check-col" *ngIf="activeTab === 'add'"></th>
+      <th class="check-col" *ngIf="activeTab === 'add'">
+        <input
+          type="checkbox"
+          [checked]="isAllVisibleCompleted()"
+          [indeterminate]="isSomeVisibleCompleted()"
+          (change)="onToggleAllVisible($event)"
+          aria-label="Select all orders"
+        />
+      </th>
       <th class="id-col">ID</th>
       <th class="name-col">Order Name</th>
       <th class="qty-col">Quantity</th>

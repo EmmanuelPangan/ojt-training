@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { OrdersService } from '../../services/orders.service';
 @Component({
   selector: 'app-add-task',
@@ -12,15 +12,30 @@ export class AddTaskComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private orderService: OrdersService) {}
 
+  noNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (!value) {
+        return null;
+      }
+
+      return /\d/.test(value) ? { hasNumber: true } : null;
+    };
+  }
+
   ngOnInit(): void {
     this.addForm = this.fb.group({
-      orderName: ['', Validators.required],
+      orderName: ['', [Validators.required, this.noNumberValidator()]],
       quantity: ['', Validators.required],
       price: ['', Validators.required]
     });
   }
 
   onSubmit() {
+  if (this.addForm.invalid) {
+    this.addForm.markAllAsTouched();
+    return;
+  }
   
   const orders = this.orderService.getOrders();
 
