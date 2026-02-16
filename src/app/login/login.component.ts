@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
   error = '';
+  showPassword = false;
 
   constructor
   (
@@ -45,6 +46,10 @@ export class LoginComponent implements OnInit {
     } else {
       this.error = 'Invalid credentials';
     }
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
   register()

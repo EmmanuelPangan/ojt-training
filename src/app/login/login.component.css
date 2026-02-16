@@ -115,13 +115,45 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.password-input-wrap {
+  position: relative;
+}
+
+.password-input-wrap input {
+  padding-right: 44px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: auto;
+  margin-top: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #2a5569;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+}
+
+.password-toggle:hover {
+  transform: translateY(-50%);
+  filter: none;
+  box-shadow: none;
+}
+
 .login-container input:focus {
   outline: none;
   border-color: #2f8db3;
   box-shadow: 0 0 0 3px rgba(47, 141, 179, 0.18);
 }
 
-.login-container button {
+.login-container button[type='submit'] {
   width: 100%;
   margin-top: 4px;
   padding: 11px;
@@ -134,7 +166,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
-.login-container button:hover {
+.login-container button[type='submit']:hover {
   transform: translateY(-1px);
   filter: brightness(1.04);
   box-shadow: 0 8px 16px rgba(0, 44, 66, 0.22);
